@@ -22,21 +22,54 @@ function loadStore(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch{
 const saved = loadStore();
 const progress = {done:saved.done||{},chosen:saved.chosen||{},checked:saved.checked||{},written:saved.written||{}};
 const ui = {book:'home',selectedBook:'student',index:0,versePart:null,lang:saved.lang==='ar'?'ar':'en'};
+const listening = {items:[],position:0,mode:'',token:0,paused:false,activeAudio:null,activeSpeech:null,activeItem:null,rate:[.8,1,1.15].includes(saved.listenRate)?saved.listenRate:1};
+const speechLibrary=[];
 const t = key => labels[ui.lang][key]||key;
 const say = (ar,en) => ui.lang==='en'?en:ar;
-function store(){try{localStorage.setItem(KEY,JSON.stringify({...progress,lang:ui.lang}))}catch{}}
+function store(){try{localStorage.setItem(KEY,JSON.stringify({...progress,lang:ui.lang,listenRate:listening.rate}))}catch{}}
 function esc(value=''){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function dir(text){return /^[\s\d\p{P}\p{S}]*[\u0600-\u06ff]/u.test(text)?'rtl':'ltr'}
 function fmt(text){return esc(text).replace(/https?:\/\/[^\s<]+/g,url=>`<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`)}
+function audioLanguage(text){return /[\u0600-\u06ff]/u.test(String(text))?'ar':'en'}
+function voiceItem(text){return {kind:'speech',text:String(text||'').trim(),lang:audioLanguage(text)}}
+function speechUnit(text,description){
+  if(!String(text||'').trim())return '';
+  const id=speechLibrary.push([voiceItem(text)])-1;
+  return `<button type="button" class="listen-inline" data-listen-unit="${id}" title="${say('استمع','Listen')}" aria-label="${esc(description||say('استمع إلى هذا الجزء','Listen to this item'))}"><span aria-hidden="true">🔊</span></button>`;
+}
+function speechGroup(items,description){
+  const id=speechLibrary.push(items)-1;
+  return `<button type="button" class="listen-group" data-listen-unit="${id}" aria-label="${esc(description||say('استمع إلى الجزء بالكامل','Listen to the whole part'))}"><span aria-hidden="true">▶</span> ${say('استمع للجزء','Listen to this part')}</button>`;
+}
+function audioItemsFromBlock(block){
+  if(block.type==='paragraph'||block.type==='bullet')return [voiceItem(block.text)];
+  if(block.type==='subheading')return [voiceItem(block.title.ar),voiceItem(block.title.en)].filter(x=>x.text);
+  if(block.type==='table')return block.rows.flatMap(row=>row.map(voiceItem));
+  if(block.type==='written')return [voiceItem(block.question)];
+  if(block.type==='quiz')return [voiceItem(block.question),...block.options.map(o=>voiceItem(`${o.letter}. ${o.text}`))];
+  return [];
+}
+function sectionAudioItems(book,index){
+  const section=data.books[book]?.[index];if(!section)return [];
+  const verseMatch=section.title.en.match(/^Verse (\d+)(?:\s+—\s+Detailed iʿrāb)?$/);
+  const output=[];
+  output.push(voiceItem((ui.lang==='ar'?section.title.ar:section.title.en)||section.title.en));
+  for(const [i,block] of section.blocks.entries()){
+    if(verseMatch&&i===0&&block.type==='paragraph'){
+      output.push({kind:'recitation',verse:Number(verseMatch[1])});
+    }else output.push(...audioItemsFromBlock(block));
+  }
+  return output;
+}
 // Keep Quranic text as one untouched Uthmani-script string. Verse numbers are
 // separate presentation elements: combining Latin digits with RTL Quran text
 // previously caused the markers to jump or appear in the wrong reading order.
-function quranVerseHTML(source,verseNumber){
+function quranVerseHTML(source,verseNumber,showInlinePlay=true){
   const match=String(source).match(/\s+﴿\s*([0-9٠-٩]+)\s*﴾\s*$/u);
   const text=match?source.slice(0,match.index).trim():String(source).trim();
   const number=verseNumber||Number(match?.[1]?.replace(/[٠-٩]/g,d=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(d))))||0;
   const arabicDigits=String(number).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[Number(d)]);
-  return `<div class="quran-verse" lang="ar" dir="rtl"><span class="quran-verse-line"><span class="quran-verse-text">${esc(text)}</span><span class="ayah-number" lang="ar" dir="ltr" aria-label="${say(`الآية ${arabicDigits}`,`Verse ${number}`)}"><span aria-hidden="true">${arabicDigits}</span></span></span></div>`;
+  return `<div class="quran-verse" lang="ar" dir="rtl"><span class="quran-verse-line"><span class="quran-verse-text">${esc(text)}</span><span class="ayah-number" lang="ar" dir="ltr" aria-label="${say(`الآية ${arabicDigits}`,`Verse ${number}`)}"><span aria-hidden="true">${arabicDigits}</span></span></span></div>${showInlinePlay?`<div class="verse-inline-listen"><button type="button" data-listen-verse="${number}" class="listen-group">▶ ${say('استمع للآية بصوت المنشاوي','Hear this verse — Al-Minshawi')}</button></div>`:''}`;
 }
 function toast(message){clearTimeout(toastTimer);toastEl.textContent=message;toastEl.classList.add('show');toastTimer=setTimeout(()=>toastEl.classList.remove('show'),2300)}
 function bookName(book){return t(book)}
@@ -105,22 +138,23 @@ function surahsPage(){
 }
 
 function blockHTML(block,book){
-  if(block.type==='paragraph')return `<p class="body-paragraph" dir="${dir(block.text)}">${fmt(block.text)}</p>`;
-  if(block.type==='bullet')return `<p class="body-bullet" dir="${dir(block.text)}">${fmt(block.text)}</p>`;
-  if(block.type==='subheading')return `<div class="content-subheading"><span>${esc(block.title.ar||block.title.en)}</span><span>${esc(block.title.en)}</span></div>`;
+  if(block.type==='paragraph')return `<div class="listen-text-row">${speechUnit(block.text)}<p class="body-paragraph" dir="${dir(block.text)}">${fmt(block.text)}</p></div>`;
+  if(block.type==='bullet')return `<div class="listen-text-row">${speechUnit(block.text)}<p class="body-bullet" dir="${dir(block.text)}">${fmt(block.text)}</p></div>`;
+  if(block.type==='subheading')return `<div class="content-subheading"><span>${esc(block.title.ar||block.title.en)}</span><span>${esc(block.title.en)}</span>${speechUnit(block.title.ar||block.title.en,say('استمع للعنوان','Listen to heading'))}</div>`;
   if(block.type==='table'){
     const vocab=block.rows[0]?.[0]?.toLowerCase().includes('qur')&&block.rows[0]?.length===3;
-    return `${vocab?`<p class="vocab-tip">${t('revealing')}</p>`:''}<div class="table-scroll"><table class="study-table"><thead><tr>${(block.rows[0]||[]).map(cell=>`<th scope="col" dir="${dir(cell)}">${esc(cell)}</th>`).join('')}</tr></thead><tbody>${block.rows.slice(1).map((row)=>`<tr ${vocab?'class="vocab-row" tabindex="0" role="button" aria-label="Reveal word meaning"':''}>${row.map((cell,i)=>`<td dir="${dir(cell)}" ${i===0?'class="arabic-cell"':''}>${esc(cell).replace(/\n/g,'<span class="cell-line"> </span>')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    const fullTable=speechGroup(audioItemsFromBlock(block),say('استمع إلى الجدول كاملًا','Listen to the whole table'));
+    return `${vocab?`<p class="vocab-tip">${t('revealing')}</p>`:''}<div class="table-listen-tools">${fullTable}</div><div class="table-scroll"><table class="study-table"><thead><tr>${(block.rows[0]||[]).map(cell=>`<th scope="col" dir="${dir(cell)}"><span class="table-cell-listen">${esc(cell)} ${speechUnit(cell,say('استمع إلى عنوان العمود','Listen to column heading'))}</span></th>`).join('')}</tr></thead><tbody>${block.rows.slice(1).map((row)=>`<tr ${vocab?'class="vocab-row" tabindex="0" role="button" aria-label="Reveal word meaning"':''}>${row.map((cell,i)=>`<td dir="${dir(cell)}" ${i===0?'class="arabic-cell"':''}><span class="table-cell-listen">${esc(cell).replace(/\n/g,'<span class="cell-line"> </span>')} ${speechUnit(cell,say('استمع إلى الخانة','Listen to cell'))}</span></td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   }
   if(block.type==='written'){
     const value=progress.written[block.id]||'';
-    return `<article class="written-card"><div class="question-tag">${esc(block.id)} · ${t('written')}</div><h4 dir="${dir(block.question)}">${esc(block.question)}</h4><textarea data-written="${esc(block.id)}" aria-label="${esc(block.question)}" placeholder="${say('اكتب إجابتك هنا…','Write your answer here…')}" spellcheck="false">${esc(value)}</textarea><p class="autosave">${t('saved')}</p></article>`;
+    return `<article class="written-card"><div class="question-tag">${esc(block.id)} · ${t('written')}</div><div class="listen-text-row">${speechUnit(block.question)}<h4 dir="${dir(block.question)}">${esc(block.question)}</h4></div><textarea data-written="${esc(block.id)}" aria-label="${esc(block.question)}" placeholder="${say('اكتب إجابتك هنا…','Write your answer here…')}" spellcheck="false">${esc(value)}</textarea><button type="button" class="listen-group listen-own-answer" data-listen-answer="${esc(block.id)}">▶ ${say('استمع إلى إجابتي','Read my answer')}</button><p class="autosave">${t('saved')}</p></article>`;
   }
   if(block.type==='quiz'){
     const chosen=progress.chosen[block.id];const checked=progress.checked[block.id];
     const isCorrect=chosen===data.answerKey[block.id];
     const feedback=checked?`<span class="feedback ${isCorrect?'correct':'incorrect'}">${isCorrect?'✓ '+t('right'):'↻ '+t('wrong')}</span>`:'';
-    return `<article class="quiz-card"><div class="question-tag">${esc(block.id)} · ${t('quiz')}</div><h4 dir="${dir(block.question)}">${esc(block.question)}</h4><div class="choices" role="radiogroup" aria-label="${esc(block.question)}">${block.options.map(o=>`<label class="choice" dir="${dir(o.text)}"><input type="radio" name="q-${esc(block.id)}" data-quiz="${esc(block.id)}" value="${o.letter}" ${chosen===o.letter?'checked':''}><span class="choice-letter">${o.letter}.</span><span>${esc(o.text)}</span></label>`).join('')}</div><div class="quiz-footer"><button class="mini-button" data-check="${esc(block.id)}">${t('check')}</button><span class="feedback-wrap" id="feedback-${esc(block.id)}">${feedback}</span></div></article>`;
+    return `<article class="quiz-card"><div class="question-tag">${esc(block.id)} · ${t('quiz')}</div><div class="listen-text-row">${speechUnit(block.question)}<h4 dir="${dir(block.question)}">${esc(block.question)}</h4></div><div class="choices" role="radiogroup" aria-label="${esc(block.question)}">${block.options.map(o=>`<div class="quiz-listen-choice"><label class="choice" dir="${dir(o.text)}"><input type="radio" name="q-${esc(block.id)}" data-quiz="${esc(block.id)}" value="${o.letter}" ${chosen===o.letter?'checked':''}><span class="choice-letter">${o.letter}.</span><span>${esc(o.text)}</span></label>${speechUnit(o.text,say('استمع إلى الاختيار','Listen to answer option'))}</div>`).join('')}</div><div class="quiz-footer"><button class="mini-button" data-check="${esc(block.id)}">${t('check')}</button><span class="feedback-wrap" id="feedback-${esc(block.id)}">${feedback}</span></div></article>`;
   }
   return '';
 }
@@ -138,15 +172,13 @@ function versePanel(groups){
   if(ui.versePart===null)return `<div class="verse-prompt"><span aria-hidden="true">✧</span><p>${say('اختر أحد الأزرار بالأعلى لعرض هذا الجزء من الدرس وحده.','Choose a button above to study one part of the lesson at a time.')}</p></div>`;
   const selected=groups[ui.versePart];
   if(!selected)return '';
-  return `<div class="verse-detail-heading"><span>${esc(selected.title.ar||selected.title.en)}</span><small>${esc(selected.title.en)}</small></div>${selected.blocks.map(block=>blockHTML(block,'student')).join('')}`;
+  return `<div class="verse-detail-heading"><span>${esc(selected.title.ar||selected.title.en)}</span><small>${esc(selected.title.en)}</small>${speechGroup([voiceItem((ui.lang==='ar'?selected.title.ar:selected.title.en)||selected.title.en),...selected.blocks.flatMap(audioItemsFromBlock)],say('استمع إلى هذا الجزء من شرح الآية','Listen to this verse study part'))}</div>${selected.blocks.map(block=>blockHTML(block,'student')).join('')}`;
 }
 
 function verseTools(verseNumber,blocks){
   const groups=verseGroups(blocks);
-  const audioNumber=6230+verseNumber;
-  const audioUrl=`https://cdn.islamic.network/quran/audio/128/ar.minshawi/${audioNumber}.mp3`;
   const tabs=groups.map((group,i)=>`<button class="verse-tab ${ui.versePart===i?'selected':''}" id="verse-tab-${i}" data-verse-part="${i}" role="tab" aria-selected="${ui.versePart===i?'true':'false'}" aria-controls="verse-content-panel"><span class="tab-number">${String(i+1).padStart(2,'0')}</span><span class="tab-ar">${esc(group.title.ar||group.title.en)}</span><small>${esc(group.title.en)}</small></button>`).join('');
-  return `<div class="recitation-box"><div class="recitation-identity"><span class="sound-mark" aria-hidden="true">♫</span><div><strong>${say('استمع إلى الآية','Listen to this verse')}</strong><small>${say('محمد صديق المنشاوي · تلاوة مرتّلة','Mohamed Siddiq al-Minshawi · Murattal')}</small></div></div><button class="audio-button" data-audio-play aria-label="${say('تشغيل تلاوة الآية','Play verse recitation')}" aria-pressed="false"><span class="audio-symbol" aria-hidden="true">▶</span><span class="audio-caption">${say('استمع للآية','Play verse')}</span></button><audio id="verse-audio" src="${audioUrl}" preload="none"></audio></div><div class="audio-attribution"><span id="audio-status" role="status" aria-live="polite">${say('يحتاج الصوت إلى اتصال بالإنترنت','Audio needs an internet connection')}</span><a href="https://alquran.cloud/cdn" target="_blank" rel="noopener noreferrer">Al Quran Cloud / Islamic Network</a></div>
+  return `<div class="recitation-box"><div class="recitation-identity"><span class="sound-mark" aria-hidden="true">♫</span><div><strong>${say('استمع إلى الآية','Listen to this verse')}</strong><small>${say('محمد صديق المنشاوي · تلاوة مرتّلة','Mohamed Siddiq al-Minshawi · Murattal')}</small></div></div><button class="audio-button" data-audio-play="${verseNumber}" aria-label="${say('تشغيل تلاوة الآية','Play verse recitation')}" aria-pressed="false"><span class="audio-symbol" aria-hidden="true">▶</span><span class="audio-caption">${say('استمع للآية','Play verse')}</span></button></div><div class="audio-attribution"><span id="audio-status" role="status" aria-live="polite">${say('يحتاج الصوت إلى اتصال بالإنترنت','Audio needs an internet connection')}</span><a href="https://alquran.cloud/cdn" target="_blank" rel="noopener noreferrer">Al Quran Cloud / Islamic Network</a></div>
   <section class="verse-study"><div class="verse-study-heading"><div><strong>${say('استكشف الآية خطوة بخطوة','Explore the verse step by step')}</strong><p>${say('كل زر يعرض قسمًا واحدًا فقط من شرح الآية.','Each button opens just one part of the verse study.')}</p></div><span class="study-decoration" aria-hidden="true">۞</span></div><div class="verse-tabs" role="tablist" aria-label="${say('أقسام شرح الآية','Verse study sections')}">${tabs}</div><div class="verse-content-panel" id="verse-content-panel" role="tabpanel" aria-live="polite">${versePanel(groups)}</div></section>`;
 }
 
@@ -159,13 +191,14 @@ function book(){
   const blocks=section.blocks.slice();let introduction='';
   if((isVerse||ui.book==='irab'&&!!verseMatch)&&blocks[0]?.type==='paragraph'){
     const original=blocks.shift().text;
-    introduction=quranVerseHTML(original,Number(verseMatch[1]));
-    if(blocks[0]?.type==='paragraph')introduction+=`<p class="translation">${esc(blocks.shift().text)}</p>`;
+    introduction=quranVerseHTML(original,Number(verseMatch[1]),!isVerse);
+    if(blocks[0]?.type==='paragraph'){const translation=blocks.shift().text;introduction+=`<div class="listen-text-row">${speechUnit(translation,say('استمع إلى الترجمة','Listen to the translation'))}<p class="translation">${esc(translation)}</p></div>`}
   }
   const key=sectionKey(ui.book,ui.index);const isDone=!!progress.done[key];
+  const audioToolbar=`<section class="listening-toolbar" aria-label="${say('الاستماع والتشغيل','Listening controls')}"><div class="listening-actions"><button type="button" class="listen-main" data-listen-section>🔊 ${say('استمع إلى القسم كاملًا','Listen to this section')}</button><button type="button" class="listen-main" data-listen-book>🔊 ${say('استمع إلى الكتاب كاملًا','Listen to whole book')}</button><button type="button" class="listen-main" data-listen-surah>♫ ${say('تلاوة السورة كاملة','Recite all 6 verses')}</button><button type="button" class="listen-selection" data-listen-selection>◉ ${say('اسمع النص المحدد','Read selected text')}</button></div><div class="listening-transport"><button type="button" data-listen-pause disabled>Ⅱ ${say('إيقاف مؤقت','Pause')}</button><button type="button" data-listen-stop disabled>■ ${say('إيقاف','Stop')}</button><label>${say('السرعة','Speed')} <select data-listen-rate aria-label="${say('سرعة الاستماع','Narration speed')}"><option value="0.8" ${listening.rate===.8?'selected':''}>0.8×</option><option value="1" ${listening.rate===1?'selected':''}>1×</option><option value="1.15" ${listening.rate===1.15?'selected':''}>1.15×</option></select></label></div><p id="listening-status" class="listening-status" role="status" aria-live="polite">${say('اختر ما تريد الاستماع إليه.','Choose what you would like to hear.')}</p><small class="listening-note">${say('تلاوة القرآن بصوت المنشاوي عبر الإنترنت. الشروح والأسئلة بصوت الجهاز المتاح.','Qur’anic verses: Al-Minshawi online. Explanations and exercises: your device’s available speech voice.')}</small></section>`;
   return `<nav class="journey-breadcrumb" aria-label="Breadcrumb"><button data-open="home">${say('الكتب','All books')}</button><span aria-hidden="true">/</span><button data-choose-book="${ui.book}">${bookName(ui.book)}</button><span aria-hidden="true">/</span><strong>${say('سورة الناس','Surah An-Nās')}</strong></nav><header class="book-heading"><div><div class="eyebrow">LESSON 01 / SURAH AN-NĀS</div><h1>${bookName(ui.book)}</h1><p>${ui.book==='student'?'STUDENT BOOK':ui.book==='workbook'?'WORKBOOK':'DETAILED IʿRĀB BOOK'} · Arabic Light Academy</p></div><span class="pill">${sections.length} ${say('أقسام','sections')}</span></header>
     <div class="book-layout"><aside class="chapter-panel" aria-label="${t('units')}"><h3>${t('units')}</h3>${sections.map((s,i)=>`<button class="chapter-button ${ui.index===i?'selected':''}" data-section="${i}" aria-current="${ui.index===i?'true':'false'}"><span class="chapter-no">${String(i+1).padStart(2,'0')}</span><span>${esc((ui.lang==='en'?s.title.en:s.title.ar)||s.title.en)}</span>${progress.done[sectionKey(ui.book,i)]?'<span class="chapter-done">✓</span>':''}</button>`).join('')}</aside>
-    <article class="lesson-paper"><div class="lesson-header"><div class="lesson-pretitle"><span lang="ar" dir="rtl">عَرَبِيَّةُ الْقُرْآنِ · سُورَةُ النَّاسِ</span><span>${String(ui.index+1).padStart(2,'0')} / ${sections.length}</span></div><h2>${esc((ui.lang==='en'?section.title.en:section.title.ar)||section.title.en)}</h2><div class="lesson-en">${esc(section.title.en)}</div></div>
+    <article class="lesson-paper"><div class="lesson-header"><div class="lesson-pretitle"><span lang="ar" dir="rtl">عَرَبِيَّةُ الْقُرْآنِ · سُورَةُ النَّاسِ</span><span>${String(ui.index+1).padStart(2,'0')} / ${sections.length}</span></div><h2>${esc((ui.lang==='en'?section.title.en:section.title.ar)||section.title.en)}</h2><div class="lesson-en">${esc(section.title.en)}</div></div>${audioToolbar}
     ${introduction}${isVerse?verseTools(Number(verseMatch[1]),blocks):blocks.map(b=>blockHTML(b,ui.book)).join('')}
     <div class="complete-row"><button class="mark-done ${isDone?'is-done':''}" data-done="${ui.index}">${isDone?'✓ '+t('completed'):'○ '+t('complete')}</button><div class="lesson-controls"><button class="step-button" data-step="-1" ${ui.index===0?'disabled':''}>${say('→','←')} ${t('previous')}</button><button class="step-button" data-step="1" ${ui.index===sections.length-1?'disabled':''}>${t('next')} ${say('←','→')}</button></div></div></article></div>`;
 }
@@ -182,6 +215,8 @@ function progressPage(){
 }
 
 function render(){
+  stopNarration(false);
+  speechLibrary.length=0;
   document.documentElement.lang=ui.lang;
   document.documentElement.dir=ui.lang==='ar'?'rtl':'ltr';
   const titles={home:t('home'),surahs:t('surahs'),student:t('student'),workbook:t('workbook'),irab:t('irab'),progress:t('progress')};
@@ -197,38 +232,123 @@ function render(){
   document.getElementById('lang-toggle').textContent=ui.lang==='ar'?'EN':'ع';
   installButton.lastChild.textContent=say(' تثبيت التطبيق',' Install app');
   contentEl.innerHTML=ui.book==='home'?home():ui.book==='surahs'?surahsPage():ui.book==='progress'?progressPage():book();
-  const verseAudio=document.getElementById('verse-audio');
-  if(verseAudio){
-    verseAudio.addEventListener('ended',()=>setAudioButton(false));
-    verseAudio.addEventListener('error',()=>{
-      setAudioButton(false);
-      const status=document.getElementById('audio-status');
-      if(status)status.textContent=say('تعذّر تحميل التلاوة. تحقّق من اتصال الإنترنت.','Could not load the recitation. Check your internet connection.');
-    });
+}
+
+function splitForSpeech(item){
+  if(item.kind!=='speech')return [item];
+  const words=item.text.replace(/\s+/gu,' ').trim().split(' ').filter(Boolean);
+  const parts=[];let current='',language=item.lang;
+  for(const word of words){
+    const wordLanguage=/[\u0600-\u06ff]/u.test(word)?'ar':/[A-Za-z]/.test(word)?'en':language;
+    if(current&&(language!==wordLanguage||current.length+word.length>170)){
+      parts.push({kind:'speech',text:current,lang:language,sectionIndex:item.sectionIndex});current='';
+    }
+    language=wordLanguage;current+=(current?' ':'')+word;
+  }
+  if(current)parts.push({kind:'speech',text:current,lang:language,sectionIndex:item.sectionIndex});
+  return parts;
+}
+
+function setListeningStatus(message){const el=document.getElementById('listening-status');if(el)el.textContent=message}
+function updateListeningControls(){
+  const active=!!listening.mode;
+  const pause=document.querySelector('[data-listen-pause]'),stop=document.querySelector('[data-listen-stop]');
+  if(pause){pause.disabled=!active;pause.textContent=listening.paused?say('▶ متابعة','▶ Resume'):say('Ⅱ إيقاف مؤقت','Ⅱ Pause')}
+  if(stop)stop.disabled=!active;
+  const recitation=document.querySelector('[data-audio-play]');
+  if(recitation){
+    const playing=active&&!listening.paused&&listening.mode===`verse-${recitation.dataset.audioPlay}`;
+    recitation.setAttribute('aria-pressed',playing?'true':'false');recitation.classList.toggle('playing',playing);
+    recitation.querySelector('.audio-symbol').textContent=playing?'Ⅱ':'▶';
+    recitation.querySelector('.audio-caption').textContent=playing?say('إيقاف مؤقت','Pause'):say('استمع للآية','Play verse');
   }
 }
-
-function setAudioButton(playing){
-  const button=document.querySelector('[data-audio-play]');if(!button)return;
-  button.setAttribute('aria-pressed',playing?'true':'false');
-  button.classList.toggle('playing',playing);
-  button.querySelector('.audio-symbol').textContent=playing?'Ⅱ':'▶';
-  button.querySelector('.audio-caption').textContent=playing?say('إيقاف مؤقت','Pause'):say('استمع للآية','Play verse');
-  const status=document.getElementById('audio-status');
-  if(status)status.textContent=playing?say('جارٍ تشغيل التلاوة','Playing recitation'):say('يمكنك إعادة الاستماع في أي وقت','Replay whenever you like');
+function stopNarration(showStatus=true){
+  listening.token++;
+  if(listening.activeAudio){listening.activeAudio.onended=null;listening.activeAudio.onerror=null;listening.activeAudio.pause();listening.activeAudio=null}
+  if('speechSynthesis' in window)window.speechSynthesis.cancel();
+  listening.items=[];listening.position=0;listening.mode='';listening.paused=false;listening.activeItem=null;listening.activeSpeech=null;
+  if(showStatus)setListeningStatus(say('تم إيقاف الاستماع.','Playback stopped.'));
+  updateListeningControls();
 }
-
-async function toggleAudio(){
-  const audio=document.getElementById('verse-audio');if(!audio)return;
-  if(!audio.paused){audio.pause();setAudioButton(false);return}
-  const status=document.getElementById('audio-status');
-  if(status)status.textContent=say('جارٍ تحميل التلاوة…','Loading recitation…');
-  try{await audio.play();setAudioButton(true)}
-  catch{setAudioButton(false);if(status)status.textContent=say('لم يبدأ الصوت. تحقق من الإنترنت ثم حاول مجددًا.','Playback could not start. Check your connection and try again.')}
+function getNarrationVoice(language){
+  const voices=window.speechSynthesis.getVoices();
+  return voices.find(v=>v.lang.toLowerCase().startsWith(language)&&v.localService)||voices.find(v=>v.lang.toLowerCase().startsWith(language))||null;
+}
+function narrationStep(token){
+  if(token!==listening.token||listening.paused)return;
+  if(listening.position>=listening.items.length){
+    listening.mode='';listening.activeItem=null;listening.activeAudio=null;listening.activeSpeech=null;
+    updateListeningControls();setListeningStatus(say('انتهى الاستماع. يمكنك تشغيله مجددًا.','Finished listening. You can play it again.'));return;
+  }
+  const item=listening.items[listening.position++];listening.activeItem=item;
+  const part=item.sectionIndex===undefined?'':say(` · القسم ${item.sectionIndex+1}`,` · section ${item.sectionIndex+1}`);
+  if(item.kind==='recitation'){
+    const audio=new Audio(`https://cdn.islamic.network/quran/audio/128/ar.minshawi/${6230+item.verse}.mp3`);
+    listening.activeAudio=audio;listening.activeSpeech=null;
+    setListeningStatus(say(`تلاوة المنشاوي · الآية ${item.verse}${part}`,`Al-Minshawi · verse ${item.verse}${part}`));
+    const status=document.getElementById('audio-status');if(status)status.textContent=say('جارٍ تشغيل التلاوة','Playing recitation');
+    audio.onended=()=>{if(token!==listening.token)return;listening.activeAudio=null;narrationStep(token)};
+    audio.onerror=()=>{if(token!==listening.token)return;listening.activeAudio=null;stopNarration(false);setListeningStatus(say('تعذّر تحميل التلاوة. تحقق من اتصال الإنترنت.','Recitation could not load. Check your internet connection.'))};
+    audio.play().catch(()=>{if(token!==listening.token)return;listening.activeAudio=null;stopNarration();toast(say('لم يبدأ الصوت. جرّب زر الاستماع مرة أخرى.','Audio could not start. Try tapping play again.'))});
+  }else{
+    if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){stopNarration();toast(say('هذا المتصفح لا يدعم قراءة النصوص صوتيًا.','Speech reading is unavailable in this browser.'));return}
+    const utterance=new SpeechSynthesisUtterance(item.text);
+    utterance.lang=item.lang==='ar'?'ar-SA':'en-US';utterance.rate=listening.rate;
+    const voice=getNarrationVoice(item.lang);if(voice)utterance.voice=voice;
+    listening.activeSpeech=utterance;listening.activeAudio=null;
+    setListeningStatus(say(`جارٍ قراءة النص${part}`,`Reading aloud${part}`));
+    utterance.onend=()=>{if(token!==listening.token)return;listening.activeSpeech=null;narrationStep(token)};
+    utterance.onerror=e=>{if(token!==listening.token)return;listening.activeSpeech=null;if(e.error==='canceled'||e.error==='interrupted')return;stopNarration(false);setListeningStatus(say('تعذّرت قراءة النص بهذا الصوت. تأكد من وجود صوت عربي أو إنجليزي على جهازك.','This device could not read the text. Check that an Arabic or English voice is installed.'))};
+    window.speechSynthesis.speak(utterance);
+  }
+  updateListeningControls();
+}
+function startNarration(items,mode){
+  const needsSpeech=items.some(item=>item.kind==='speech'&&item.text?.trim());
+  if(needsSpeech&&(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window))){toast(say('المتصفح لا يدعم القراءة الصوتية للنصوص.','Text-to-speech is not supported in this browser.'));return}
+  stopNarration(false);
+  listening.items=items.flatMap(splitForSpeech).filter(item=>item.kind==='recitation'||item.text?.trim());
+  if(!listening.items.length){toast(say('لا يوجد نص للاستماع.','There is nothing to read.'));return}
+  listening.mode=mode;listening.position=0;const token=listening.token;
+  updateListeningControls();narrationStep(token);
+}
+function pauseOrResumeNarration(){
+  if(!listening.mode)return;
+  listening.paused=!listening.paused;
+  if(listening.activeAudio){
+    if(listening.paused)listening.activeAudio.pause();
+    else listening.activeAudio.play().catch(()=>{stopNarration();toast(say('تعذّر استكمال التلاوة.','Could not resume the recitation.'))});
+  }
+  if(listening.activeSpeech&&'speechSynthesis' in window){
+    if(listening.paused)window.speechSynthesis.pause();
+    else window.speechSynthesis.resume();
+  }
+  if(!listening.paused&&!listening.activeSpeech&&!listening.activeAudio)narrationStep(listening.token);
+  setListeningStatus(listening.paused?say('متوقف مؤقتًا','Paused'):say('جارٍ الاستماع…','Playing…'));
+  updateListeningControls();
+}
+function toggleAudio(verse){
+  if(listening.mode===`verse-${verse}`){pauseOrResumeNarration();return}
+  startNarration([{kind:'recitation',verse}],`verse-${verse}`);
 }
 
 nav.addEventListener('click',e=>{const btn=e.target.closest('[data-book]');if(btn){if(data.books[btn.dataset.book])chooseBook(btn.dataset.book);else jump(btn.dataset.book)}});
 contentEl.addEventListener('click',e=>{
+  const unit=e.target.closest('[data-listen-unit]');if(unit){const items=speechLibrary[Number(unit.dataset.listenUnit)];if(items)startNarration(items,`unit-${unit.dataset.listenUnit}`);return}
+  const oneVerse=e.target.closest('[data-listen-verse]');if(oneVerse){toggleAudio(Number(oneVerse.dataset.listenVerse));return}
+  const verseButton=e.target.closest('[data-audio-play]');if(verseButton){toggleAudio(Number(verseButton.dataset.audioPlay));return}
+  if(e.target.closest('[data-listen-section]')){startNarration(sectionAudioItems(ui.book,ui.index).map(item=>({...item,sectionIndex:ui.index})),'section');return}
+  if(e.target.closest('[data-listen-book]')){const items=data.books[ui.book].flatMap((section,index)=>sectionAudioItems(ui.book,index).map(item=>({...item,sectionIndex:index})));startNarration(items,'book');return}
+  if(e.target.closest('[data-listen-surah]')){startNarration(Array.from({length:6},(_,index)=>({kind:'recitation',verse:index+1})),'surah');return}
+  if(e.target.closest('[data-listen-selection]')){
+    const selection=window.getSelection();const selected=selection&&contentEl.contains(selection.anchorNode)?selection.toString().trim():listening.selectedText;
+    if(selected)startNarration([voiceItem(selected)],'selection');else toast(say('حدّد كلمة أو جملة أولًا.','Select a word or sentence first.'));
+    return;
+  }
+  const ownAnswer=e.target.closest('[data-listen-answer]');if(ownAnswer){const box=Array.from(contentEl.querySelectorAll('[data-written]')).find(x=>x.dataset.written===ownAnswer.dataset.listenAnswer);if(box?.value.trim())startNarration([voiceItem(box.value)],'answer');else toast(say('اكتب إجابتك أولًا.','Write your answer first.'));return}
+  if(e.target.closest('[data-listen-pause]')){pauseOrResumeNarration();return}
+  if(e.target.closest('[data-listen-stop]')){stopNarration();return}
   const chosen=e.target.closest('[data-choose-book]');if(chosen){chooseBook(chosen.dataset.chooseBook);return}
   const surah=e.target.closest('[data-open-surah]');if(surah){jump(surah.dataset.openSurah,0);return}
   const open=e.target.closest('[data-open]');if(open){jump(open.dataset.open);return}
@@ -247,13 +367,15 @@ contentEl.addEventListener('click',e=>{
     if(panel)panel.innerHTML=versePanel(groups);
     return;
   }
-  if(e.target.closest('[data-audio-play]')){toggleAudio();return}
   const done=e.target.closest('[data-done]');if(done){const key=sectionKey(ui.book,ui.index);progress.done[key]=!progress.done[key];store();render();toast(t('done'));return}
   const check=e.target.closest('[data-check]');if(check){const id=check.dataset.check;if(!progress.chosen[id]){toast(t('pick'));return}progress.checked[id]=true;store();const good=progress.chosen[id]===data.answerKey[id];document.getElementById(`feedback-${id}`).innerHTML=`<span class="feedback ${good?'correct':'incorrect'}">${good?'✓ '+t('right'):'↻ '+t('wrong')}</span>`;return}
   const row=e.target.closest('.vocab-row');if(row){row.classList.toggle('revealed');row.setAttribute('aria-pressed',row.classList.contains('revealed')?'true':'false')}
 });
 contentEl.addEventListener('keydown',e=>{const row=e.target.closest('.vocab-row');if(row&&(e.key==='Enter'||e.key===' ')){e.preventDefault();row.click()}});
-contentEl.addEventListener('change',e=>{if(e.target.matches('[data-quiz]')){const id=e.target.dataset.quiz;progress.chosen[id]=e.target.value;delete progress.checked[id];store();const f=document.getElementById(`feedback-${id}`);if(f)f.innerHTML=''}});
+contentEl.addEventListener('change',e=>{
+  if(e.target.matches('[data-listen-rate]')){listening.rate=Number(e.target.value);store();return}
+  if(e.target.matches('[data-quiz]')){const id=e.target.dataset.quiz;progress.chosen[id]=e.target.value;delete progress.checked[id];store();const f=document.getElementById(`feedback-${id}`);if(f)f.innerHTML=''}
+});
 contentEl.addEventListener('input',e=>{
   if(e.target.matches('[data-written]')){progress.written[e.target.dataset.written]=e.target.value;store();return}
   if(e.target.matches('#surah-search')){
@@ -263,8 +385,10 @@ contentEl.addEventListener('input',e=>{
     const none=document.getElementById('surah-no-results');if(none)none.hidden=visible!==0;
   }
 });
+document.addEventListener('selectionchange',()=>{const selection=window.getSelection();if(selection&&!selection.isCollapsed&&contentEl.contains(selection.anchorNode))listening.selectedText=selection.toString().trim()});
 document.getElementById('lang-toggle').addEventListener('click',()=>{ui.lang=ui.lang==='ar'?'en':'ar';store();render()});
 window.addEventListener('hashchange',()=>{parseLocation();render()});
+window.addEventListener('pagehide',()=>stopNarration(false));
 window.addEventListener('online',updateOnline);window.addEventListener('offline',updateOnline);
 function updateOnline(){document.getElementById('offline-status').hidden=navigator.onLine}
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;installButton.hidden=false});
