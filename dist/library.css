@@ -92,11 +92,62 @@ html[dir='rtl'] .progress-line { text-align: right; }
 .surah-arrow { font-size: 23px; color: var(--copper); }
 .surah-future { color: var(--muted); font-size: 12px; line-height: 1.8; margin-top: 19px; }
 
+/* Step 1: the learner chooses one of the three companion books. */
+.book-catalog { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.book-option { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 19px; padding: 22px 17px 20px; text-align: center; background: #fff; border: 1px solid var(--line); border-radius: 19px; cursor: pointer; box-shadow: var(--shadow); transition: transform .2s, border-color .2s, box-shadow .2s; font: inherit; }
+.book-option:hover, .book-option:focus-visible { transform: translateY(-4px); border-color: #d69a78; box-shadow: 0 15px 40px rgba(65,49,47,.12); }
+.book-option img { width: min(160px, 75%); aspect-ratio: 524/740; object-fit: cover; box-shadow: 0 8px 18px rgba(40,31,35,.15); border: 1px solid #e9e3df; border-radius: 4px; }
+.book-option-details { display: flex; flex-direction: column; align-items: center; gap: 9px; width: 100%; }
+.book-option-details strong { font-size: clamp(19px, 2.1vw, 25px); line-height: 1.3; color: var(--head); }
+.book-option-ar { color: var(--copper); font-family: 'Amiri','Traditional Arabic',serif; font-size: 21px; }
+.book-option-cta { display: flex; justify-content: center; align-items: center; gap: 12px; padding: 11px 12px; width: 100%; border-radius: 10px; color: #fff; background: var(--copper); font-size: 12px; font-weight: 750; margin-top: 3px; }
+.book-option-cta span { font-size: 18px; }
+
+/* Step 2: show all 114 surahs in Mushaf order, but unlock only authored lessons. */
+.surah-choices { max-width: none; }
+.surah-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 17px; flex-wrap: wrap; margin: 0 0 18px; }
+.surah-toolbar h2 { margin-bottom: 5px; }
+.surah-toolbar p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.surah-search-wrap { display: flex; align-items: center; gap: 8px; width: min(100%,320px); background: #fff; border: 1px solid #dedad8; border-radius: 11px; padding: 0 12px; }
+.surah-search-wrap:focus-within { border-color: var(--copper); box-shadow: 0 0 0 3px rgba(172,106,70,.1); }
+.surah-search-icon { font-size: 28px; line-height: 1; color: var(--copper); }
+.surah-search-wrap input { border: 0; min-width: 0; outline: none; height: 43px; width: 100%; color: var(--head); background: transparent; font: inherit; font-size: 13px; direction: inherit; }
+.surah-list-status { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; color: var(--muted); font-size: 12px; }
+.surah-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.surah-grid .surah-choice { min-width: 0; grid-template-columns: 39px minmax(0,1fr); grid-template-rows: auto auto; padding: 13px; gap: 8px 11px; border-radius: 12px; box-shadow: none; cursor: pointer; }
+.surah-grid .surah-choice[hidden] { display: none !important; }
+.surah-grid .surah-number { width: 39px; height: 39px; border-radius: 10px; font-size: 14px; align-self: center; grid-row: 1 / 3; }
+.surah-grid .surah-choice-title { gap: 2px; }
+.surah-grid .surah-choice-title strong { font-size: 13.5px; line-height: 1.5; }
+.surah-grid .surah-choice-title > span { font-size: 18px; line-height: 1.35; }
+.surah-grid .surah-status { grid-column: 2; align-self: start; color: #9793a0; font-size: 10px; }
+.surah-grid .surah-status-ready { color: #267958; font-weight: 800; }
+.surah-grid .surah-choice:disabled { cursor: default; color: inherit; background: #fcfbfa; border-color: #ebe9e8; opacity: .85; }
+.surah-grid .surah-choice:disabled:hover { transform: none; border-color: #ebe9e8; }
+.surah-grid .surah-is-ready { background: #f3fbf7; border-color: #9dceb6; box-shadow: 0 4px 18px rgba(38,121,88,.08); }
+.surah-grid .surah-is-ready:hover { border-color: #267958; }
+.surah-grid .surah-is-ready .surah-number { background: #e0f3e9; color: #267958; }
+.surah-no-results { text-align: center; margin: 30px 0; font-size: 14px; color: var(--muted); }
+.surah-no-results[hidden] { display: none; }
+
 @media (max-width: 880px) {
   .catalog-book { grid-template-columns: 110px minmax(0,1fr); padding: 17px; gap: 18px; }
   .catalog-details h2 { font-size: 22px; }
+  .surah-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 620px) {
+  .book-catalog { grid-template-columns: 1fr; gap: 12px; }
+  .book-option { flex-direction: row; align-items: center; text-align: start; padding: 12px; gap: 17px; }
+  .book-option img { width: 78px; flex: 0 0 78px; }
+  .book-option-details { align-items: start; gap: 6px; }
+  .book-option-details strong { font-size: 18px; }
+  .book-option-ar { font-size: 17px; }
+  .book-option-cta { font-size: 11px; padding: 9px; }
+  .surah-grid { grid-template-columns: 1fr; gap: 9px; }
+  .surah-grid .surah-choice { grid-template-columns: 39px minmax(0,1fr); gap: 5px 11px; padding: 12px; }
+  .surah-grid .surah-number { width: 39px; height: 39px; font-size: 14px; grid-column: 1; grid-row: 1 / 3; }
+  .surah-grid .surah-status { grid-column: 2; grid-row: 2; }
+  .surah-search-wrap { width: 100%; }
   .library-heading h1 { font-size: 27px; }
   .catalog-book { grid-template-columns: 88px minmax(0,1fr); gap: 13px; padding: 12px; align-items: start; }
   .catalog-cover-link { margin-top: 5px; }
