@@ -22,12 +22,14 @@ python3 -m http.server 8000 --directory dist
 
 Open <http://localhost:8000>.
 
-The application is a buildless PWA: `index.html`, `style.css`, `quran.css`, `library.css`, `app.js`, `content.json`, `manifest.webmanifest`, and `sw.js`, with book cover thumbnails under `dist/covers/`. For installation/offline support, deploy over HTTPS or localhost.
+The application is a buildless PWA: `index.html`, `style.css`, `quran.css`, `library.css`, `app.js`, `content.json`, `surahs.json`, `manifest.webmanifest`, and `sw.js`, with book cover thumbnails under `dist/covers/`. For installation/offline support, deploy over HTTPS or localhost.
 
 The default English interface is left-to-right. Users first choose a book,
-then choose a surah, then study that book's content. Currently only Surah
-An-Nās has approved lesson material; future surahs can be added to the catalog
-without inventing unavailable chapters. The optional Arabic interface is
+then see **all 114 surahs in Mushaf order** and choose a surah, then study that
+book's content. The complete surah-name list is in `dist/surahs.json`, based on
+the [Quran.com surah directory](https://quran.com/surahs). Currently only Surah
+An-Nās has approved lesson material, so the other 113 entries are visibly
+marked "Coming soon" and cannot open an invented lesson. The optional Arabic interface is
 right-to-left; Qur'anic verses and Arabic excerpts always remain RTL.
 
 ## Update the source material
