@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f7f6">
+  <meta name="description" content="عربية القرآن — تطبيق تفاعلي لسورة الناس، يجمع كتاب الطالب والتدريبات والإعراب من Arabic Light Academy.">
+  <meta name="color-scheme" content="light">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>عَرَبِيَّةُ الْقُرْآنِ | Arabic Light Academy</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="التنقل الرئيسي">
+      <div class="brand">
+        <img src="./academy-logo.png" alt="Arabic Light Academy" class="brand-logo">
+        <div class="brand-name"><span>ARABIC LIGHT</span><small>ACADEMY</small></div>
+      </div>
+      <div class="sidebar-label">QUR'ANIC ARABIC <span>·</span> Lesson 01</div>
+      <nav class="primary-nav" id="primary-nav">
+        <button class="nav-link active" data-book="home"><span class="nav-icon">⌂</span><span>الرئيسية</span><small>Overview</small></button>
+        <button class="nav-link" data-book="student"><span class="nav-icon">▤</span><span>كتاب الطالب</span><small>Student Book</small></button>
+        <button class="nav-link" data-book="workbook"><span class="nav-icon">✓</span><span>كتاب التدريبات</span><small>Workbook</small></button>
+        <button class="nav-link" data-book="irab"><span class="nav-icon">۞</span><span>كتاب الإعراب</span><small>Iʿrāb Book</small></button>
+        <button class="nav-link" data-book="progress"><span class="nav-icon">◔</span><span>تقدّمي</span><small>Progress</small></button>
+      </nav>
+      <div class="sidebar-footer"><div class="footer-ornament">❖</div><span>التعلّم من آيات القرآن</span><small>Learn Arabic through the Qur'an</small></div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="crumb"><span>عربية القرآن</span><span class="slash">/</span><strong id="current-page">الرئيسية</strong></div>
+        <div class="top-actions">
+          <span class="offline-status" id="offline-status" hidden>وضع عدم الاتصال</span>
+          <button class="icon-button" id="lang-toggle" title="Switch interface language" aria-label="Switch interface language">EN</button>
+          <button class="install-button" id="install-button" hidden><span>＋</span> تثبيت التطبيق</button>
+        </div>
+      </header>
+
+      <main id="app-content" class="content" tabindex="-1">
+        <div class="loading"><div class="loading-mark">۞</div><p>جارٍ إعداد الدرس…</p></div>
+      </main>
+      <footer class="site-footer">© Arabic Light Academy <span>·</span> QUR'ANIC ARABIC <span>·</span> LESSON 01</footer>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>

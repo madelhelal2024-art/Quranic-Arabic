@@ -1,0 +1,3051 @@
+{
+  "title": "عَرَبِيَّةُ الْقُرْآنِ",
+  "lesson": "سُورَةُ النَّاسِ",
+  "books": {
+    "student": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Surah Introduction",
+          "ar": "مُقَدِّمَةُ السُّورَةِ"
+        },
+        "blocks": [
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Item",
+                "Information"
+              ],
+              [
+                "Name and meaning",
+                "سُورَةُ النَّاسِ — Sūrat al-Nās — Humankind"
+              ],
+              [
+                "Number and length",
+                "Chapter 114, six verses; Juzʾ 30"
+              ],
+              [
+                "Classification",
+                "Makkan according to the stronger view; some scholars classify it as Madinan."
+              ],
+              [
+                "Other designation",
+                "One of the two al-Muʿawwidhatayn (the two chapters of seeking protection)."
+              ],
+              [
+                "Central theme",
+                "Seeking Allah's protection from hidden, harmful suggestions arising among jinn and people."
+              ],
+              [
+                "Language focus",
+                "Imperative and present verbs; genitive constructions; apposition/description; relative pronoun; quadriliteral verb; broken plural."
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Reason for Revelation",
+              "ar": "أَسْبَابُ النُّزُولِ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "No specific occasion of revelation is established with sufficient certainty to be presented as an undisputed cause for Sūrat al-Nās. Some reports link the two protective surahs to the incident of sorcery against the Prophet ﷺ, but the historical incident and a claim about the surahs' precise occasion of revelation are distinct matters. Ibn ʿĀshūr questions that connection. We therefore do not teach it as settled fact."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Learning Objectives",
+              "ar": "أَهْدَافُ التَّعَلُّمِ"
+            }
+          },
+          {
+            "type": "bullet",
+            "text": "Read all six verses accurately and explain their connected meaning."
+          },
+          {
+            "type": "bullet",
+            "text": "Understand every Qur'anic word in this surah using simple English and Arabic glosses."
+          },
+          {
+            "type": "bullet",
+            "text": "Recognize the imperative قُلْ, the present verbs أَعُوذُ and يُوَسْوِسُ, and the four-letter verb وَسْوَسَ."
+          },
+          {
+            "type": "bullet",
+            "text": "Identify genitive nouns, iḍāfah, adjectives and a relative clause."
+          },
+          {
+            "type": "bullet",
+            "text": "Notice the repeated ٱلنَّاسِ and the three descriptions رَبِّ، مَلِكِ، إِلَـٰهِ."
+          },
+          {
+            "type": "paragraph",
+            "text": "Study note: This is the opening lesson in our sequence. All Qur'anic example phrases in the lesson come from Sūrat al-Nās. Additional verb forms are labelled as language forms, not quoted Qur'anic verses."
+          }
+        ]
+      },
+      {
+        "id": "s2",
+        "title": {
+          "en": "Verse 1",
+          "ar": "الْآيَةُ 1"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ  ﴿1﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "Say: I seek refuge in the Lord of humankind."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Word-by-word meaning",
+              "ar": "مَعَانِي الْكَلِمَاتِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Qur'anic word",
+                "Simple Arabic gloss",
+                "Meaning in English"
+              ],
+              [
+                "قُلْ",
+                "قُلْ، أَمْرٌ بِالْقَوْلِ",
+                "Say; a command to speak"
+              ],
+              [
+                "أَعُوذُ",
+                "أَلْتَجِئُ وَأَطْلُبُ الْحِمَايَةَ",
+                "I seek refuge and protection"
+              ],
+              [
+                "بِرَبِّ",
+                "بِـ: بِـ / رَبّ: الْمُرَبِّي وَالْمُدَبِّرُ",
+                "In / with the Lord and Sustainer"
+              ],
+              [
+                "ٱلنَّاسِ",
+                "الْبَشَرُ جَمِيعًا",
+                "Humankind; people"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Overall meaning",
+              "ar": "الْمَعْنَى الْإِجْمَالِيُّ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Allah teaches the Prophet, and through him every believer, to turn to Him for protection. The act of seeking refuge is expressed directly in the first person: ‘I seek refuge.’"
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Grammar and morphology",
+              "ar": "النَّحْوُ وَالصَّرْفُ"
+            }
+          },
+          {
+            "type": "bullet",
+            "text": "قُلْ is an imperative (فِعْلُ أَمْرٍ). Its understood subject is ‘you’ (أَنْتَ)."
+          },
+          {
+            "type": "bullet",
+            "text": "أَعُوذُ is a present-tense verb (فِعْلٌ مُضَارِعٌ), first-person singular. Its subject is understood as أَنَا."
+          },
+          {
+            "type": "bullet",
+            "text": "The preposition بِـ makes رَبِّ genitive (مَجْرُورًا). رَبِّ is also the first member (مُضَاف) of the phrase رَبِّ ٱلنَّاسِ, and ٱلنَّاسِ is مُضَافٌ إِلَيْهِ."
+          },
+          {
+            "type": "bullet",
+            "text": "قُلْ comes from قَالَ / يَقُولُ (root ق و ل), a Form I hollow verb (فِعْلٌ أَجْوَفُ)."
+          },
+          {
+            "type": "bullet",
+            "text": "أَعُوذُ comes from عَاذَ / يَعُوذُ (root ع و ذ), also a Form I hollow verb."
+          },
+          {
+            "type": "bullet",
+            "text": "رَبّ is a noun associated with the root ر ب ب; ٱلنَّاسِ is a plural/collective designation for people."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Verb conjugation",
+              "ar": "تَصْرِيفُ الْأَفْعَالِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Past",
+                "Present",
+                "Form in the lesson",
+                "Meaning / note"
+              ],
+              [
+                "قَالَ",
+                "يَقُولُ",
+                "قُلْ",
+                "to say"
+              ],
+              [
+                "عَاذَ",
+                "يَعُوذُ",
+                "أَعُوذُ",
+                "to seek refuge; 1st-person form in the verse"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The listed forms are morphological study forms. Only the exact word shown in the verse strip is Qur'anic text from this passage."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Rhetorical feature",
+              "ar": "لَمْسَةٌ بَلَاغِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The direct command قُلْ gives the learner words to use. Beginning with Allah's lordship establishes the source of the sought protection."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Language benefit",
+              "ar": "فَائِدَةٌ لُغَوِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "One Arabic word can contain a prefixed particle and a noun: بِرَبِّ combines بِـ with رَبِّ. In an iḍāfah, the second noun is genitive."
+          }
+        ]
+      },
+      {
+        "id": "s3",
+        "title": {
+          "en": "Verse 2",
+          "ar": "الْآيَةُ 2"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "مَلِكِ ٱلنَّاسِ  ﴿2﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "The Sovereign of humankind."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Word-by-word meaning",
+              "ar": "مَعَانِي الْكَلِمَاتِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Qur'anic word",
+                "Simple Arabic gloss",
+                "Meaning in English"
+              ],
+              [
+                "مَلِكِ",
+                "صَاحِبُ الْمُلْكِ وَالسُّلْطَانِ",
+                "Sovereign; King"
+              ],
+              [
+                "ٱلنَّاسِ",
+                "الْبَشَرُ",
+                "Humankind"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Overall meaning",
+              "ar": "الْمَعْنَى الْإِجْمَالِيُّ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The One whose protection is sought is not only the Lord who nurtures people; He also possesses complete authority over them."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Grammar and morphology",
+              "ar": "النَّحْوُ وَالصَّرْفُ"
+            }
+          },
+          {
+            "type": "bullet",
+            "text": "مَلِكِ is genitive because it further describes or clarifies رَبِّ in verse 1. It may be analysed as a substitute (بَدَل), an explanatory apposition (عَطْفُ بَيَان), or an adjective (نَعْت)."
+          },
+          {
+            "type": "bullet",
+            "text": "مَلِكِ ٱلنَّاسِ is another possessive/association construction (إِضَافَة): مَلِكِ is مُضَاف and ٱلنَّاسِ is مُضَافٌ إِلَيْهِ."
+          },
+          {
+            "type": "bullet",
+            "text": "مَلِك is a noun built from root م ل ك. It is not a finite verb in this verse."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Verb conjugation",
+              "ar": "تَصْرِيفُ الْأَفْعَالِ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "There is no explicit finite verb in this verse. / لَا يُوجَدُ فِعْلٌ صَرِيحٌ فِي هَذِهِ الْآيَةِ."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Rhetorical feature",
+              "ar": "لَمْسَةٌ بَلَاغِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The description moves from the Lord who cares for people to the Sovereign who rules them. Repeating ٱلنَّاسِ keeps the group receiving that care and authority explicit."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Language benefit",
+              "ar": "فَائِدَةٌ لُغَوِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The grammar can continue across verse boundaries: مَلِكِ is linked to رَبِّ in the previous verse, not an independent nominative word."
+          }
+        ]
+      },
+      {
+        "id": "s4",
+        "title": {
+          "en": "Verse 3",
+          "ar": "الْآيَةُ 3"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "إِلَـٰهِ ٱلنَّاسِ  ﴿3﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "The God of humankind, worthy of their worship."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Word-by-word meaning",
+              "ar": "مَعَانِي الْكَلِمَاتِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Qur'anic word",
+                "Simple Arabic gloss",
+                "Meaning in English"
+              ],
+              [
+                "إِلَـٰهِ",
+                "الْمَعْبُودُ بِحَقٍّ",
+                "God; the One rightly worshipped"
+              ],
+              [
+                "ٱلنَّاسِ",
+                "الْبَشَرُ",
+                "Humankind"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Overall meaning",
+              "ar": "الْمَعْنَى الْإِجْمَالِيُّ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Allah is the true God of all people, so seeking His protection is an act of worship and reliance upon Him."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Grammar and morphology",
+              "ar": "النَّحْوُ وَالصَّرْفُ"
+            }
+          },
+          {
+            "type": "bullet",
+            "text": "إِلَـٰهِ is genitive as a further explanation of رَبِّ (and of the sequence مَلِكِ); the grammarians also allow بدل, عطف بيان and نعت analyses."
+          },
+          {
+            "type": "bullet",
+            "text": "إِلَـٰهِ ٱلنَّاسِ is an iḍāfah construction, and ٱلنَّاسِ is genitive as مُضَافٌ إِلَيْهِ."
+          },
+          {
+            "type": "bullet",
+            "text": "إِلَٰه is a noun (اسْم), not a verb. The verse uses it in a genitive form: إِلَٰهِ."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Verb conjugation",
+              "ar": "تَصْرِيفُ الْأَفْعَالِ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "There is no explicit finite verb in this verse. / لَا يُوجَدُ فِعْلٌ صَرِيحٌ فِي هَذِهِ الْآيَةِ."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Rhetorical feature",
+              "ar": "لَمْسَةٌ بَلَاغِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The three successive descriptions — رَبِّ، مَلِكِ، إِلَـٰهِ — present care, authority and the right to be worshipped. This is a meaningful progression, not a list of unrelated titles."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Language benefit",
+              "ar": "فَائِدَةٌ لُغَوِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The same noun ٱلنَّاسِ appears in verses 1, 2 and 3, each time after a different preceding noun."
+          }
+        ]
+      },
+      {
+        "id": "s5",
+        "title": {
+          "en": "Verse 4",
+          "ar": "الْآيَةُ 4"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ  ﴿4﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "From the evil of the whisperer who withdraws."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Word-by-word meaning",
+              "ar": "مَعَانِي الْكَلِمَاتِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Qur'anic word",
+                "Simple Arabic gloss",
+                "Meaning in English"
+              ],
+              [
+                "مِن",
+                "حَرْفُ جَرٍّ يَدُلُّ عَلَى الِاسْتِعَاذَةِ مِنَ الشَّرِّ",
+                "From"
+              ],
+              [
+                "شَرِّ",
+                "الأَذَى وَالسُّوءُ",
+                "Evil; harm"
+              ],
+              [
+                "ٱلْوَسْوَاسِ",
+                "كَثِيرُ الْوَسْوَسَةِ",
+                "The whisperer; one who repeatedly whispers"
+              ],
+              [
+                "ٱلْخَنَّاسِ",
+                "الَّذِي يَخْتَفِي أَوْ يَتَأَخَّرُ",
+                "The one who retreats or hides"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Overall meaning",
+              "ar": "الْمَعْنَى الْإِجْمَالِيُّ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The believer asks to be protected from harmful, quiet suggestions that lead toward wrong actions. The whisperer is called ‘one who withdraws’ because he retreats when Allah is remembered."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Grammar and morphology",
+              "ar": "النَّحْوُ وَالصَّرْفُ"
+            }
+          },
+          {
+            "type": "bullet",
+            "text": "مِن is a preposition. It makes شَرِّ genitive; شَرِّ is also مُضَاف."
+          },
+          {
+            "type": "bullet",
+            "text": "ٱلْوَسْوَاسِ is مُضَافٌ إِلَيْهِ and is genitive. ٱلْخَنَّاسِ is an adjective (نَعْت) describing it, so it is genitive too."
+          },
+          {
+            "type": "bullet",
+            "text": "The phrase مِن شَرِّ is grammatically connected to أَعُوذُ in verse 1, although three verses intervene."
+          },
+          {
+            "type": "bullet",
+            "text": "ٱلْوَسْوَاس is derived from the four-letter verb وَسْوَسَ (root و س و س). Here the noun denotes the whisperer."
+          },
+          {
+            "type": "bullet",
+            "text": "ٱلْخَنَّاس is on the intensive pattern فَعَّال from root خ ن س, indicating frequent or characteristic withdrawal."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Verb conjugation",
+              "ar": "تَصْرِيفُ الْأَفْعَالِ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "There is no explicit finite verb in this verse. / لَا يُوجَدُ فِعْلٌ صَرِيحٌ فِي هَذِهِ الْآيَةِ."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Rhetorical feature",
+              "ar": "لَمْسَةٌ بَلَاغِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The paired expressions ٱلْوَسْوَاسِ and ٱلْخَنَّاسِ describe an adversary who both whispers and draws back, giving a vivid picture of hidden influence."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Language benefit",
+              "ar": "فَائِدَةٌ لُغَوِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The grammatical relation introduced by a verb may extend beyond a single verse; this is why reading the entire passage helps more than isolated word translation."
+          }
+        ]
+      },
+      {
+        "id": "s6",
+        "title": {
+          "en": "Verse 5",
+          "ar": "الْآيَةُ 5"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ  ﴿5﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "Who whispers into the inner hearts of humankind."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Word-by-word meaning",
+              "ar": "مَعَانِي الْكَلِمَاتِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Qur'anic word",
+                "Simple Arabic gloss",
+                "Meaning in English"
+              ],
+              [
+                "ٱلَّذِى",
+                "الشَّخْصُ أَوِ الَّذِي سَبَقَ وَصْفُهُ",
+                "The one who; relative pronoun"
+              ],
+              [
+                "يُوَسْوِسُ",
+                "يُلْقِي خَوَاطِرَ خَفِيَّةً",
+                "He whispers"
+              ],
+              [
+                "فِى",
+                "حَرْفُ جَرٍّ",
+                "In; into"
+              ],
+              [
+                "صُدُورِ",
+                "جَمْعُ صَدْرٍ؛ مَوْضِعُ الْقَلْبِ",
+                "Chests; inward hearts"
+              ],
+              [
+                "ٱلنَّاسِ",
+                "الْبَشَرُ",
+                "Humankind"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Overall meaning",
+              "ar": "الْمَعْنَى الْإِجْمَالِيُّ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The verse tells us how the whisperer acts: he places hidden suggestions in people's inner lives and thoughts, rather than necessarily speaking aloud."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Grammar and morphology",
+              "ar": "النَّحْوُ وَالصَّرْفُ"
+            }
+          },
+          {
+            "type": "bullet",
+            "text": "ٱلَّذِى is a relative pronoun (اسْمٌ مَوْصُول) in a genitive syntactic position, describing ٱلْوَسْوَاسِ."
+          },
+          {
+            "type": "bullet",
+            "text": "يُوَسْوِسُ is a present-tense verb with a hidden third-person masculine subject, هُوَ; the verbal clause is the relative clause (صِلَةُ الْمَوْصُول)."
+          },
+          {
+            "type": "bullet",
+            "text": "فِى is a preposition; صُدُورِ is genitive and مُضَاف; ٱلنَّاسِ is its genitive مُضَافٌ إِلَيْهِ."
+          },
+          {
+            "type": "bullet",
+            "text": "وَسْوَسَ / يُوَسْوِسُ is a four-radical (رُبَاعِيّ) verb, patterned فَعْلَلَ / يُفَعْلِلُ, not a triliteral Form II verb."
+          },
+          {
+            "type": "bullet",
+            "text": "صُدُور is the broken plural (جَمْعُ تَكْسِير) of صَدْر on the pattern فُعُول."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Verb conjugation",
+              "ar": "تَصْرِيفُ الْأَفْعَالِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Past",
+                "Present",
+                "Form in the lesson",
+                "Meaning / note"
+              ],
+              [
+                "وَسْوَسَ",
+                "يُوَسْوِسُ",
+                "—",
+                "to whisper; 3rd-person present in the verse"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The listed forms are morphological study forms. Only the exact word shown in the verse strip is Qur'anic text from this passage."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Rhetorical feature",
+              "ar": "لَمْسَةٌ بَلَاغِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The relative clause gives a precise description of the hidden action. The phrase فِى صُدُورِ directs attention to the inward place where suggestions are received."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Language benefit",
+              "ar": "فَائِدَةٌ لُغَوِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Arabic has four-letter verb roots as well as three-letter roots. Recognising the repeated consonants in وَسْوَسَ helps identify the word family."
+          }
+        ]
+      },
+      {
+        "id": "s7",
+        "title": {
+          "en": "Verse 6",
+          "ar": "الْآيَةُ 6"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ  ﴿6﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "From among jinn and humankind."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Word-by-word meaning",
+              "ar": "مَعَانِي الْكَلِمَاتِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Qur'anic word",
+                "Simple Arabic gloss",
+                "Meaning in English"
+              ],
+              [
+                "مِنَ",
+                "حَرْفُ جَرٍّ؛ وَتَحَرَّكَتْ نُونُهُ بِالْفَتْحِ",
+                "From; among"
+              ],
+              [
+                "ٱلْجِنَّةِ",
+                "جَمَاعَةُ الْجِنِّ",
+                "The jinn"
+              ],
+              [
+                "وَٱلنَّاسِ",
+                "وَ: حَرْفُ عَطْفٍ؛ النَّاسِ: الْبَشَرُ",
+                "And humankind"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Overall meaning",
+              "ar": "الْمَعْنَى الْإِجْمَالِيُّ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The closing words make clear that harmful suggestions can come from jinn and from human beings. The believer seeks Allah's protection from both."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Grammar and morphology",
+              "ar": "النَّحْوُ وَالصَّرْفُ"
+            }
+          },
+          {
+            "type": "bullet",
+            "text": "مِنَ is a preposition and ٱلْجِنَّةِ is its genitive noun. The و in وَٱلنَّاسِ is a coordinating conjunction; ٱلنَّاسِ is also genitive."
+          },
+          {
+            "type": "bullet",
+            "text": "In detailed iʿrāb, مِنَ can be understood as explanatory (بَيَانِيَّة), or as indicating origin or part of a group. These alternatives belong in the companion Iʿrāb Book."
+          },
+          {
+            "type": "bullet",
+            "text": "ٱلْجِنَّةِ denotes the jinn in this context. Its initial vowel is kasrah: الْجِنَّة, not a word for a garden or paradise."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Verb conjugation",
+              "ar": "تَصْرِيفُ الْأَفْعَالِ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "There is no explicit finite verb in this verse. / لَا يُوجَدُ فِعْلٌ صَرِيحٌ فِي هَذِهِ الْآيَةِ."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Rhetorical feature",
+              "ar": "لَمْسَةٌ بَلَاغِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Ending with both ٱلْجِنَّةِ and ٱلنَّاسِ broadens the warning to visible and unseen sources of temptation and completes the surah's protective prayer."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Language benefit",
+              "ar": "فَائِدَةٌ لُغَوِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Paying attention to vowels changes meaning. In this verse the word ٱلْجِنَّةِ refers to jinn; it should not be read with a different initial vowel."
+          }
+        ]
+      },
+      {
+        "id": "s8",
+        "title": {
+          "en": "Comprehensive Final Surah Review",
+          "ar": "الْمُرَاجَعَةُ الْخِتَامِيَّةُ الشَّامِلَةُ"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "This is a complete review of the six verses. Read the whole surah aloud first. Then connect its meaning, words, grammar, verb forms and rhetorical features before answering the 20 multiple-choice questions below."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Surah identity and central message",
+              "ar": "هُوِيَّةُ السُّورَةِ وَمَوْضُوعُهَا"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Sūrat al-Nās is chapter 114 of the Qur'an, with six verses in Juzʾ 30. It is one of the two al-Muʿawwidhatayn. The stronger classification is Makkan, though there is scholarly disagreement. No particular event should be taught as an undisputed occasion of its revelation. Its central message is to seek the protection of Allah — the Lord, Sovereign and God of humankind — from harmful suggestions associated with the whisperer, whether their source is among jinn or people."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "The meaning of all six verses",
+              "ar": "مُرَاجَعَةُ مَعَانِي الْآيَاتِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Verse",
+                "Key Qur'anic wording",
+                "What the verse adds"
+              ],
+              [
+                "1",
+                "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ",
+                "A direct command to seek protection in Allah's lordship."
+              ],
+              [
+                "2",
+                "مَلِكِ ٱلنَّاسِ",
+                "Allah's complete sovereignty and authority over people."
+              ],
+              [
+                "3",
+                "إِلَـٰهِ ٱلنَّاسِ",
+                "Allah alone is the God worthy of worship."
+              ],
+              [
+                "4",
+                "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ",
+                "The harmful whisperer, who retreats or withdraws."
+              ],
+              [
+                "5",
+                "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ",
+                "The hidden action of whispering in people's inward lives."
+              ],
+              [
+                "6",
+                "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ",
+                "The sources mentioned include jinn and human beings."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Important connection: verses 2 and 3 continue the description of رَبِّ in verse 1; مِن شَرِّ in verse 4 is connected to أَعُوذُ; and verse 5 describes the whisperer in verse 4. The verse endings do not break these grammatical links."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Essential vocabulary",
+              "ar": "أَهَمُّ الْمُفْرَدَاتِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Arabic",
+                "English"
+              ],
+              [
+                "قُلْ",
+                "Say; a command"
+              ],
+              [
+                "أَعُوذُ",
+                "I seek refuge"
+              ],
+              [
+                "رَبّ",
+                "Lord; Sustainer"
+              ],
+              [
+                "مَلِك",
+                "Sovereign; King"
+              ],
+              [
+                "إِلَٰه",
+                "God, the One rightly worshipped"
+              ],
+              [
+                "شَرّ",
+                "Evil; harm"
+              ],
+              [
+                "وَسْوَاس",
+                "Whisperer"
+              ],
+              [
+                "خَنَّاس",
+                "One who retreats"
+              ],
+              [
+                "يُوَسْوِسُ",
+                "He whispers"
+              ],
+              [
+                "صُدُور",
+                "Chests; inner hearts"
+              ],
+              [
+                "ٱلْجِنَّةِ",
+                "Jinn, not a garden"
+              ],
+              [
+                "ٱلنَّاسِ",
+                "Humankind; people"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Grammar map",
+              "ar": "خَرِيطَةُ الْقَوَاعِدِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Concept",
+                "Verse example",
+                "What to notice"
+              ],
+              [
+                "Imperative",
+                "قُلْ",
+                "A command to one person; hidden subject أَنْتَ"
+              ],
+              [
+                "Present verbs",
+                "أَعُوذُ / يُوَسْوِسُ",
+                "First-person and third-person subjects"
+              ],
+              [
+                "Preposition + genitive",
+                "بِرَبِّ / مِن شَرِّ / فِى صُدُورِ",
+                "The governed noun is genitive"
+              ],
+              [
+                "Iḍāfah",
+                "رَبِّ ٱلنَّاسِ / شَرِّ ٱلْوَسْوَاسِ / صُدُورِ ٱلنَّاسِ",
+                "The second noun is مُضَافٌ إِلَيْهِ"
+              ],
+              [
+                "Genitive continuity",
+                "رَبِّ, then مَلِكِ, then إِلَـٰهِ",
+                "Later descriptions remain genitive"
+              ],
+              [
+                "Adjective",
+                "ٱلْوَسْوَاسِ ٱلْخَنَّاسِ",
+                "The describing word follows in case"
+              ],
+              [
+                "Relative clause",
+                "ٱلَّذِى يُوَسْوِسُ",
+                "The clause explains the preceding noun"
+              ],
+              [
+                "Conjunction",
+                "وَٱلنَّاسِ",
+                "The second noun is joined by وَ and remains genitive"
+              ],
+              [
+                "Four-letter verb",
+                "يُوَسْوِسُ",
+                "Root و س و س, pattern يُفَعْلِلُ"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Verb and morphology recap",
+              "ar": "مُرَاجَعَةُ الْأَفْعَالِ وَالصَّرْفِ"
+            }
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Past form",
+                "Present form",
+                "Form in this surah",
+                "Root and note"
+              ],
+              [
+                "قَالَ",
+                "يَقُولُ",
+                "قُلْ",
+                "ق و ل; imperative, hollow Form I verb"
+              ],
+              [
+                "عَاذَ",
+                "يَعُوذُ",
+                "أَعُوذُ",
+                "ع و ذ; first-person present, hollow Form I verb"
+              ],
+              [
+                "وَسْوَسَ",
+                "يُوَسْوِسُ",
+                "يُوَسْوِسُ",
+                "و س و س; four-letter verb, يُفَعْلِلُ"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Other forms in this chart are morphological study forms, not additional Qur'anic quotations. The broken plural صُدُور belongs to صَدْر, and ٱلْخَنَّاس is an intensive descriptor on the pattern فَعَّال."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Rhetorical and linguistic insights",
+              "ar": "الْبَلَاغَةُ وَالْفَوَائِدُ اللُّغَوِيَّةُ"
+            }
+          },
+          {
+            "type": "bullet",
+            "text": "The opening قُلْ teaches the very words of seeking refuge."
+          },
+          {
+            "type": "bullet",
+            "text": "The order is رَبِّ first, then مَلِكِ, then إِلَـٰهِ: from lordship and care to authority and worship."
+          },
+          {
+            "type": "bullet",
+            "text": "ٱلنَّاسِ appears five times, directly reinforcing each connection to humankind."
+          },
+          {
+            "type": "bullet",
+            "text": "The paired terms ٱلْوَسْوَاسِ and ٱلْخَنَّاسِ create the picture of repeated whispering and withdrawal."
+          },
+          {
+            "type": "bullet",
+            "text": "The relative clause ٱلَّذِى يُوَسْوِسُ identifies the whisperer through his action."
+          },
+          {
+            "type": "bullet",
+            "text": "The final mention of jinn and people includes unseen and human sources of harmful suggestions."
+          },
+          {
+            "type": "bullet",
+            "text": "Read vowels carefully: ٱلْجِنَّةِ here denotes jinn, not a garden; بِرَبِّ contains a prefixed preposition and a noun."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Before the questions",
+              "ar": "تَأَكَّدْ مِنْ فَهْمِكَ"
+            }
+          },
+          {
+            "type": "bullet",
+            "text": "Can you give a connected meaning for all six verses without treating them as unrelated sentences?"
+          },
+          {
+            "type": "bullet",
+            "text": "Can you identify the three verbs, their persons, and their roots?"
+          },
+          {
+            "type": "bullet",
+            "text": "Can you locate the iḍāfah, adjective, relative clause, and every preposition?"
+          },
+          {
+            "type": "bullet",
+            "text": "Can you explain the repetition of ٱلنَّاسِ and the three descriptions of Allah?"
+          }
+        ]
+      },
+      {
+        "id": "s9",
+        "title": {
+          "en": "Multiple Choice Review",
+          "ar": "عِشْرُونَ سُؤَالًا اخْتِيَارِيًّا"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Choose one correct answer for each question. Questions 1–5 review meaning, 6–10 vocabulary, 11–18 grammar and morphology, and 19–20 rhetorical comprehension. The answer key is in the companion Workbook."
+          },
+          {
+            "type": "quiz",
+            "id": "S1",
+            "question": "How many verses are in Sūrat al-Nās?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Three"
+              },
+              {
+                "letter": "B",
+                "text": "Six"
+              },
+              {
+                "letter": "C",
+                "text": "Five"
+              },
+              {
+                "letter": "D",
+                "text": "Seven"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S2",
+            "question": "What is the central request taught by this surah?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "To ask for wealth"
+              },
+              {
+                "letter": "B",
+                "text": "To describe a journey"
+              },
+              {
+                "letter": "C",
+                "text": "To count people"
+              },
+              {
+                "letter": "D",
+                "text": "To seek Allah's protection"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S3",
+            "question": "Which is the order of the three descriptions in verses 1–3?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Lord, then Sovereign, then God"
+              },
+              {
+                "letter": "B",
+                "text": "Sovereign, then Lord, then God"
+              },
+              {
+                "letter": "C",
+                "text": "God, then Lord, then Sovereign"
+              },
+              {
+                "letter": "D",
+                "text": "Lord, then God, then Sovereign"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S4",
+            "question": "What danger does verse 4 mention?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Loud thunder"
+              },
+              {
+                "letter": "B",
+                "text": "Physical hunger"
+              },
+              {
+                "letter": "C",
+                "text": "The evil of the whisperer"
+              },
+              {
+                "letter": "D",
+                "text": "Loss of property"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S5",
+            "question": "Which two groups are mentioned at the end of the surah?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Angels and prophets"
+              },
+              {
+                "letter": "B",
+                "text": "Jinn and people"
+              },
+              {
+                "letter": "C",
+                "text": "Kings and teachers"
+              },
+              {
+                "letter": "D",
+                "text": "Children and elders"
+              }
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Vocabulary",
+              "ar": "مَجْمُوعَةٌ جَدِيدَةٌ"
+            }
+          },
+          {
+            "type": "quiz",
+            "id": "S6",
+            "question": "What does أَعُوذُ mean?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "I seek refuge"
+              },
+              {
+                "letter": "B",
+                "text": "I speak"
+              },
+              {
+                "letter": "C",
+                "text": "He withdraws"
+              },
+              {
+                "letter": "D",
+                "text": "They hear"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S7",
+            "question": "Which meaning best fits ٱلْخَنَّاسِ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "The one who commands"
+              },
+              {
+                "letter": "B",
+                "text": "The one who owns"
+              },
+              {
+                "letter": "C",
+                "text": "The one who sees"
+              },
+              {
+                "letter": "D",
+                "text": "The one who retreats"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S8",
+            "question": "What does صُدُورِ mean in verse 5?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Tongues"
+              },
+              {
+                "letter": "B",
+                "text": "Hands"
+              },
+              {
+                "letter": "C",
+                "text": "Chests or inner hearts"
+              },
+              {
+                "letter": "D",
+                "text": "Eyes"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S9",
+            "question": "Which English meaning matches مَلِكِ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "A person"
+              },
+              {
+                "letter": "B",
+                "text": "Sovereign or King"
+              },
+              {
+                "letter": "C",
+                "text": "Whispering"
+              },
+              {
+                "letter": "D",
+                "text": "Protection"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S10",
+            "question": "What does ٱلْجِنَّةِ refer to in verse 6?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Jinn"
+              },
+              {
+                "letter": "B",
+                "text": "A garden"
+              },
+              {
+                "letter": "C",
+                "text": "A mountain"
+              },
+              {
+                "letter": "D",
+                "text": "Stars"
+              }
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Grammar and morphology",
+              "ar": "مَجْمُوعَةٌ جَدِيدَةٌ"
+            }
+          },
+          {
+            "type": "quiz",
+            "id": "S11",
+            "question": "What kind of verb is قُلْ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Past tense"
+              },
+              {
+                "letter": "B",
+                "text": "Present tense"
+              },
+              {
+                "letter": "C",
+                "text": "Imperative"
+              },
+              {
+                "letter": "D",
+                "text": "Negative command"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S12",
+            "question": "Who is the grammatical speaker in أَعُوذُ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "He"
+              },
+              {
+                "letter": "B",
+                "text": "They"
+              },
+              {
+                "letter": "C",
+                "text": "You (singular)"
+              },
+              {
+                "letter": "D",
+                "text": "I"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S13",
+            "question": "How many root letters does وَسْوَسَ have in this lesson?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Two"
+              },
+              {
+                "letter": "B",
+                "text": "Four"
+              },
+              {
+                "letter": "C",
+                "text": "Three"
+              },
+              {
+                "letter": "D",
+                "text": "Five"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S14",
+            "question": "What is بِـ in بِرَبِّ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "A preposition"
+              },
+              {
+                "letter": "B",
+                "text": "A relative pronoun"
+              },
+              {
+                "letter": "C",
+                "text": "An adjective"
+              },
+              {
+                "letter": "D",
+                "text": "A conjunction"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S15",
+            "question": "Which is the مُضَافٌ إِلَيْهِ in رَبِّ ٱلنَّاسِ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "رَبِّ"
+              },
+              {
+                "letter": "B",
+                "text": "بِـ"
+              },
+              {
+                "letter": "C",
+                "text": "ٱلنَّاسِ"
+              },
+              {
+                "letter": "D",
+                "text": "قُلْ"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S16",
+            "question": "Why is مَلِكِ genitive in verse 2?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "It begins a new nominative sentence"
+              },
+              {
+                "letter": "B",
+                "text": "It follows a command"
+              },
+              {
+                "letter": "C",
+                "text": "It is a past verb"
+              },
+              {
+                "letter": "D",
+                "text": "It continues the genitive description of رَبِّ"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S17",
+            "question": "How is ٱلْخَنَّاسِ related to ٱلْوَسْوَاسِ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "It is a genitive adjective describing it"
+              },
+              {
+                "letter": "B",
+                "text": "It is an imperative verb"
+              },
+              {
+                "letter": "C",
+                "text": "It is its subject"
+              },
+              {
+                "letter": "D",
+                "text": "It is a preposition"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S18",
+            "question": "What is the grammatical type of ٱلَّذِى?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "An imperative verb"
+              },
+              {
+                "letter": "B",
+                "text": "A relative pronoun"
+              },
+              {
+                "letter": "C",
+                "text": "A possessive particle"
+              },
+              {
+                "letter": "D",
+                "text": "A past-tense verb"
+              }
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Repetition and interpretation",
+              "ar": "مَجْمُوعَةٌ جَدِيدَةٌ"
+            }
+          },
+          {
+            "type": "quiz",
+            "id": "S19",
+            "question": "How many times does the word ٱلنَّاسِ appear in this surah?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Three"
+              },
+              {
+                "letter": "B",
+                "text": "Four"
+              },
+              {
+                "letter": "C",
+                "text": "Five"
+              },
+              {
+                "letter": "D",
+                "text": "Six"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "S20",
+            "question": "What does the clause يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ add?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "The date of revelation"
+              },
+              {
+                "letter": "B",
+                "text": "A new name for the surah"
+              },
+              {
+                "letter": "C",
+                "text": "A command to the people"
+              },
+              {
+                "letter": "D",
+                "text": "A description of the whisperer's action"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "s10",
+        "title": {
+          "en": "References and editorial basis",
+          "ar": "الْمَرَاجِعُ"
+        },
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Qur'anic text and verse numbering — https://quran.com/an-nas"
+          },
+          {
+            "type": "bullet",
+            "text": "Sūrah introduction and cause-of-revelation discussion - Ibn ʿĀshūr — https://quran.com/ar/an-nas/info"
+          },
+          {
+            "type": "bullet",
+            "text": "Tafsīr al-Saʿdī, Sūrat al-Nās — https://quran.ksu.edu.sa/tafseer/saadi/sura114.htm"
+          },
+          {
+            "type": "bullet",
+            "text": "Quranic Arabic Corpus, Sūrah 114 word-by-word morphology — https://corpus.quran.com/wordbyword.jsp?chapter=114&verse=1"
+          },
+          {
+            "type": "bullet",
+            "text": "Muḥyī al-Dīn al-Darwīsh, Iʿrāb al-Qurʾān wa Bayānuh — https://quranpedia.app/uloom/darwish/sura114-aya1.html"
+          },
+          {
+            "type": "bullet",
+            "text": "ʿAbdulWāḥid Ḥamīd, Access to Qur'anic Arabic, Selections, no. 110 — User-supplied course reference; 2003 revised edition"
+          },
+          {
+            "type": "paragraph",
+            "text": "The Qur'anic text is primary. The English translation, examples, tasks and simplified explanations in these materials are original educational wording, informed by the listed sources. Where more than one iʿrāb analysis is recognized, the companion Iʿrāb Book records the alternatives."
+          }
+        ]
+      }
+    ],
+    "workbook": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "How to use this book",
+          "ar": "كَيْفَ تَسْتَخْدِمُ هَذَا الْكِتَابَ"
+        },
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Study each verse in the Student Book before answering the related questions."
+          },
+          {
+            "type": "bullet",
+            "text": "Answer orally first, then write clearly. Use the Iʿrāb Book only after attempting the grammar questions."
+          },
+          {
+            "type": "bullet",
+            "text": "Every Qur'anic citation or phrase in these exercises is from Sūrat al-Nās, our first studied surah."
+          },
+          {
+            "type": "bullet",
+            "text": "The final answer section is intended for teacher checking or self-correction after completion."
+          }
+        ]
+      },
+      {
+        "id": "s2",
+        "title": {
+          "en": "Section A — Qur'anic Understanding",
+          "ar": "قِسْمُ الْقُرْآنِ"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Working section title; it can be renamed when the full series is finalised."
+          },
+          {
+            "type": "written",
+            "id": "A1",
+            "question": "In your own words, what does أَعُوذُ mean?"
+          },
+          {
+            "type": "written",
+            "id": "A2",
+            "question": "Write the three descriptions of Allah from verses 1-3 in the order given."
+          },
+          {
+            "type": "written",
+            "id": "A3",
+            "question": "Which danger is described in verse 4? What does ٱلْخَنَّاسِ add to the description?"
+          },
+          {
+            "type": "written",
+            "id": "A4",
+            "question": "Who or what is described by the relative pronoun ٱلَّذِى?"
+          },
+          {
+            "type": "written",
+            "id": "A5",
+            "question": "From which two kinds of beings can harmful whispers come, according to verse 6?"
+          },
+          {
+            "type": "written",
+            "id": "A6",
+            "question": "Match each word with its English meaning:"
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Word",
+                "Choose from"
+              ],
+              [
+                "مَلِكِ",
+                "a. chests"
+              ],
+              [
+                "صُدُورِ",
+                "b. Sovereign"
+              ],
+              [
+                "شَرِّ",
+                "c. evil"
+              ],
+              [
+                "ٱلنَّاسِ",
+                "d. humankind"
+              ]
+            ]
+          },
+          {
+            "type": "written",
+            "id": "A7",
+            "question": "How many times does the word ٱلنَّاسِ occur in the surah?"
+          },
+          {
+            "type": "written",
+            "id": "A8",
+            "question": "Write a two-sentence English summary of the complete surah."
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Multiple choice — Qur'anic understanding",
+              "ar": "اخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ"
+            }
+          },
+          {
+            "type": "quiz",
+            "id": "A-M1",
+            "question": "Which statement summarizes verses 1–3?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "A list of human kings"
+              },
+              {
+                "letter": "B",
+                "text": "Allah is Lord, Sovereign and God of people"
+              },
+              {
+                "letter": "C",
+                "text": "Instructions about travel"
+              },
+              {
+                "letter": "D",
+                "text": "A description of the jinn alone"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "A-M2",
+            "question": "Which verse says where the whispering occurs?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Verse 2"
+              },
+              {
+                "letter": "B",
+                "text": "Verse 3"
+              },
+              {
+                "letter": "C",
+                "text": "Verse 5"
+              },
+              {
+                "letter": "D",
+                "text": "Verse 1"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "A-M3",
+            "question": "Who is instructed by قُلْ in the first verse?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "The Prophet, and through him the believer"
+              },
+              {
+                "letter": "B",
+                "text": "The whisperer"
+              },
+              {
+                "letter": "C",
+                "text": "The jinn alone"
+              },
+              {
+                "letter": "D",
+                "text": "The people addressed as kings"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "A-M4",
+            "question": "According to verse 6, harmful whispering may be associated with ...",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Jinn alone"
+              },
+              {
+                "letter": "B",
+                "text": "People alone"
+              },
+              {
+                "letter": "C",
+                "text": "Angels"
+              },
+              {
+                "letter": "D",
+                "text": "Both jinn and people"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "A-M5",
+            "question": "What does the word شَرِّ refer to?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Evil or harm"
+              },
+              {
+                "letter": "B",
+                "text": "Sovereignty"
+              },
+              {
+                "letter": "C",
+                "text": "Speech"
+              },
+              {
+                "letter": "D",
+                "text": "A human chest"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "s3",
+        "title": {
+          "en": "Section B — Grammar and Morphology",
+          "ar": "قِسْمُ النَّحْوِ وَالصَّرْفِ"
+        },
+        "blocks": [
+          {
+            "type": "written",
+            "id": "B1",
+            "question": "Find all three verbs in the surah. For each, say whether it is imperative or present tense."
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Verb",
+                "Form",
+                "Person"
+              ],
+              [
+                "________",
+                "________",
+                "________"
+              ],
+              [
+                "________",
+                "________",
+                "________"
+              ],
+              [
+                "________",
+                "________",
+                "________"
+              ]
+            ]
+          },
+          {
+            "type": "written",
+            "id": "B2",
+            "question": "Identify the preposition in each phrase: بِرَبِّ ٱلنَّاسِ — مِن شَرِّ — فِى صُدُورِ ٱلنَّاسِ."
+          },
+          {
+            "type": "written",
+            "id": "B3",
+            "question": "In رَبِّ ٱلنَّاسِ, which word is مُضَاف and which is مُضَافٌ إِلَيْهِ?"
+          },
+          {
+            "type": "written",
+            "id": "B4",
+            "question": "Explain why مَلِكِ is genitive although its verse starts with that word."
+          },
+          {
+            "type": "written",
+            "id": "B5",
+            "question": "Identify the adjective in ٱلْوَسْوَاسِ ٱلْخَنَّاسِ. What case does it follow?"
+          },
+          {
+            "type": "written",
+            "id": "B6",
+            "question": "What is the syntactic role of ٱلَّذِى, and which clause forms its صِلَة?"
+          },
+          {
+            "type": "written",
+            "id": "B7",
+            "question": "Give the past form of يُوَسْوِسُ, its four root letters, and the present-tense pattern."
+          },
+          {
+            "type": "written",
+            "id": "B8",
+            "question": "Give the singular of صُدُورِ and identify the type of plural."
+          },
+          {
+            "type": "written",
+            "id": "B9",
+            "question": "Complete the chart with forms for study (do not present these as additional Qur'anic quotations)."
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Past",
+                "Present",
+                "Meaning"
+              ],
+              [
+                "قَالَ",
+                "________",
+                "to say"
+              ],
+              [
+                "عَاذَ",
+                "________",
+                "to seek refuge"
+              ],
+              [
+                "________",
+                "يُوَسْوِسُ",
+                "to whisper"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Multiple choice — Grammar and morphology",
+              "ar": "اخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ"
+            }
+          },
+          {
+            "type": "quiz",
+            "id": "B-M1",
+            "question": "What is the hidden subject of قُلْ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "أَنَا"
+              },
+              {
+                "letter": "B",
+                "text": "أَنْتَ"
+              },
+              {
+                "letter": "C",
+                "text": "هُوَ"
+              },
+              {
+                "letter": "D",
+                "text": "نَحْنُ"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "B-M2",
+            "question": "Which pair consists of the two present-tense verbs in the surah?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "قُلْ and مَلِكِ"
+              },
+              {
+                "letter": "B",
+                "text": "أَعُوذُ and قُلْ"
+              },
+              {
+                "letter": "C",
+                "text": "شَرِّ and يُوَسْوِسُ"
+              },
+              {
+                "letter": "D",
+                "text": "أَعُوذُ and يُوَسْوِسُ"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "B-M3",
+            "question": "Which word is genitive because of the preposition فِى?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "قُلْ"
+              },
+              {
+                "letter": "B",
+                "text": "أَعُوذُ"
+              },
+              {
+                "letter": "C",
+                "text": "صُدُورِ"
+              },
+              {
+                "letter": "D",
+                "text": "ٱلَّذِى"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "B-M4",
+            "question": "Which word describes ٱلْوَسْوَاسِ as an adjective?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "شَرِّ"
+              },
+              {
+                "letter": "B",
+                "text": "ٱلْخَنَّاسِ"
+              },
+              {
+                "letter": "C",
+                "text": "صُدُورِ"
+              },
+              {
+                "letter": "D",
+                "text": "مِنَ"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "B-M5",
+            "question": "What is the grammatical function of يُوَسْوِسُ after ٱلَّذِى?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "It begins the relative clause"
+              },
+              {
+                "letter": "B",
+                "text": "It is a preposition"
+              },
+              {
+                "letter": "C",
+                "text": "It is the second member of iḍāfah"
+              },
+              {
+                "letter": "D",
+                "text": "It is an imperative"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "B-M6",
+            "question": "Which is the present-tense pattern of the quadriliteral وَسْوَسَ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "يَفْعُلُ"
+              },
+              {
+                "letter": "B",
+                "text": "يَفْعَلُ"
+              },
+              {
+                "letter": "C",
+                "text": "يُفَعِّلُ"
+              },
+              {
+                "letter": "D",
+                "text": "يُفَعْلِلُ"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "s4",
+        "title": {
+          "en": "Section C — Rhetorical Features",
+          "ar": "قِسْمُ اللَّمَسَاتِ الْبَلَاغِيَّةِ"
+        },
+        "blocks": [
+          {
+            "type": "written",
+            "id": "C1",
+            "question": "What effect does the command قُلْ have at the beginning of the surah?"
+          },
+          {
+            "type": "written",
+            "id": "C2",
+            "question": "Explain the meaningful sequence: first رَبِّ, then مَلِكِ, then إِلَـٰهِ."
+          },
+          {
+            "type": "written",
+            "id": "C3",
+            "question": "Why might the word ٱلنَّاسِ be repeated rather than replaced by a pronoun?"
+          },
+          {
+            "type": "written",
+            "id": "C4",
+            "question": "How do ٱلْوَسْوَاسِ and ٱلْخَنَّاسِ together strengthen the description of hidden temptation?"
+          },
+          {
+            "type": "written",
+            "id": "C5",
+            "question": "What does the relative clause in verse 5 add beyond the name of the whisperer?"
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Multiple choice — Rhetorical features",
+              "ar": "اخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ"
+            }
+          },
+          {
+            "type": "quiz",
+            "id": "C-M1",
+            "question": "Why is ٱلنَّاسِ repeated in the first three verses?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "To list three unrelated groups"
+              },
+              {
+                "letter": "B",
+                "text": "Because it is a verb"
+              },
+              {
+                "letter": "C",
+                "text": "To stress each description's connection to people"
+              },
+              {
+                "letter": "D",
+                "text": "To indicate a new speaker each time"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "C-M2",
+            "question": "What is the progression رَبِّ → مَلِكِ → إِلَـٰهِ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Care and lordship, authority, then worship"
+              },
+              {
+                "letter": "B",
+                "text": "Past, present, then imperative"
+              },
+              {
+                "letter": "C",
+                "text": "Jinn, humans, then angels"
+              },
+              {
+                "letter": "D",
+                "text": "A comparison of three human rulers"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "C-M3",
+            "question": "What picture do ٱلْوَسْوَاسِ and ٱلْخَنَّاسِ create together?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "An audible public speech"
+              },
+              {
+                "letter": "B",
+                "text": "A command to travel"
+              },
+              {
+                "letter": "C",
+                "text": "A person in a garden"
+              },
+              {
+                "letter": "D",
+                "text": "Whispering followed by withdrawal"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "C-M4",
+            "question": "What does the conclusion مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ emphasize?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Only visible enemies"
+              },
+              {
+                "letter": "B",
+                "text": "Both unseen and human sources"
+              },
+              {
+                "letter": "C",
+                "text": "The date of revelation"
+              },
+              {
+                "letter": "D",
+                "text": "The number of verses"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "s5",
+        "title": {
+          "en": "Section D — Language Benefits",
+          "ar": "قِسْمُ الْفَوَائِدِ اللُّغَوِيَّةِ"
+        },
+        "blocks": [
+          {
+            "type": "written",
+            "id": "D1",
+            "question": "Separate the particle and noun in بِرَبِّ, and give the role of each part."
+          },
+          {
+            "type": "written",
+            "id": "D2",
+            "question": "Explain the difference between قُلْ and أَعُوذُ in speaker/person and grammatical form."
+          },
+          {
+            "type": "written",
+            "id": "D3",
+            "question": "Why should يُوَسْوِسُ not be analysed as a three-letter root verb?"
+          },
+          {
+            "type": "written",
+            "id": "D4",
+            "question": "Write the noun and its genitive partner in the phrase صُدُورِ ٱلنَّاسِ."
+          },
+          {
+            "type": "written",
+            "id": "D5",
+            "question": "What does ٱلْجِنَّةِ mean in verse 6? Why is its vowel important?"
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Multiple choice — Language benefits",
+              "ar": "اخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ"
+            }
+          },
+          {
+            "type": "quiz",
+            "id": "D-M1",
+            "question": "How should بِرَبِّ be separated for study?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "بِـ + رَبِّ"
+              },
+              {
+                "letter": "B",
+                "text": "بِرْ + بِّ"
+              },
+              {
+                "letter": "C",
+                "text": "بِرَبِّ + ٱلنَّاسِ"
+              },
+              {
+                "letter": "D",
+                "text": "بِـ + قُلْ"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "D-M2",
+            "question": "Which word in verse 6 means jinn, rather than a garden?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "ٱلنَّاسِ"
+              },
+              {
+                "letter": "B",
+                "text": "صُدُورِ"
+              },
+              {
+                "letter": "C",
+                "text": "شَرِّ"
+              },
+              {
+                "letter": "D",
+                "text": "ٱلْجِنَّةِ"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "D-M3",
+            "question": "What is the singular of صُدُورِ?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "صَدِير"
+              },
+              {
+                "letter": "B",
+                "text": "صَادِر"
+              },
+              {
+                "letter": "C",
+                "text": "صَدْر"
+              },
+              {
+                "letter": "D",
+                "text": "صُدُور"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "s6",
+        "title": {
+          "en": "Final Surah Assessment",
+          "ar": "مُرَاجَعَةُ السُّورَةِ"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Complete the written questions independently (20 marks). Then answer the two multiple-choice consolidation questions (2 additional marks)."
+          },
+          {
+            "type": "paragraph",
+            "text": "1. Translate أَعُوذُ. (1 mark)"
+          },
+          {
+            "type": "paragraph",
+            "text": "2. Name the three descriptions of Allah in verses 1-3. (3 marks)"
+          },
+          {
+            "type": "paragraph",
+            "text": "3. Identify the two present-tense verbs. (2 marks)"
+          },
+          {
+            "type": "paragraph",
+            "text": "4. Name the imperative verb. (1 mark)"
+          },
+          {
+            "type": "paragraph",
+            "text": "5. State the relationship of ٱلْخَنَّاسِ to ٱلْوَسْوَاسِ. (2 marks)"
+          },
+          {
+            "type": "paragraph",
+            "text": "6. Give the root and pattern of يُوَسْوِسُ. (2 marks)"
+          },
+          {
+            "type": "paragraph",
+            "text": "7. Identify the مُضَافٌ إِلَيْهِ in صُدُورِ ٱلنَّاسِ. (1 mark)"
+          },
+          {
+            "type": "paragraph",
+            "text": "8. Explain the function of ٱلَّذِى and its clause. (2 marks)"
+          },
+          {
+            "type": "paragraph",
+            "text": "9. Name both groups mentioned in verse 6. (2 marks)"
+          },
+          {
+            "type": "paragraph",
+            "text": "10. Summarise the surah's meaning and one rhetorical feature. (4 marks)"
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Final multiple choice — Whole-surah review",
+              "ar": "اخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ"
+            }
+          },
+          {
+            "type": "quiz",
+            "id": "F-M1",
+            "question": "Which pair of phrases is governed by أَعُوذُ in the connected sentence?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "مَلِكِ ٱلنَّاسِ and إِلَـٰهِ ٱلنَّاسِ alone"
+              },
+              {
+                "letter": "B",
+                "text": "بِرَبِّ ٱلنَّاسِ and مِن شَرِّ ٱلْوَسْوَاسِ"
+              },
+              {
+                "letter": "C",
+                "text": "قُلْ and يُوَسْوِسُ"
+              },
+              {
+                "letter": "D",
+                "text": "ٱلَّذِى and ٱلْخَنَّاسِ alone"
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "id": "F-M2",
+            "question": "Which summary combines the surah's grammar and meaning correctly?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Three independent commands about kings"
+              },
+              {
+                "letter": "B",
+                "text": "A narrative of travel in past tense"
+              },
+              {
+                "letter": "C",
+                "text": "A connected act of seeking Allah's protection from whispering"
+              },
+              {
+                "letter": "D",
+                "text": "A list of gardens and chest parts"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "s7",
+        "title": {
+          "en": "References and editorial basis",
+          "ar": "الْمَرَاجِعُ"
+        },
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Qur'anic text and verse numbering — https://quran.com/an-nas"
+          },
+          {
+            "type": "bullet",
+            "text": "Sūrah introduction and cause-of-revelation discussion - Ibn ʿĀshūr — https://quran.com/ar/an-nas/info"
+          },
+          {
+            "type": "bullet",
+            "text": "Tafsīr al-Saʿdī, Sūrat al-Nās — https://quran.ksu.edu.sa/tafseer/saadi/sura114.htm"
+          },
+          {
+            "type": "bullet",
+            "text": "Quranic Arabic Corpus, Sūrah 114 word-by-word morphology — https://corpus.quran.com/wordbyword.jsp?chapter=114&verse=1"
+          },
+          {
+            "type": "bullet",
+            "text": "Muḥyī al-Dīn al-Darwīsh, Iʿrāb al-Qurʾān wa Bayānuh — https://quranpedia.app/uloom/darwish/sura114-aya1.html"
+          },
+          {
+            "type": "bullet",
+            "text": "ʿAbdulWāḥid Ḥamīd, Access to Qur'anic Arabic, Selections, no. 110 — User-supplied course reference; 2003 revised edition"
+          },
+          {
+            "type": "paragraph",
+            "text": "The Qur'anic text is primary. The English translation, examples, tasks and simplified explanations in these materials are original educational wording, informed by the listed sources. Where more than one iʿrāb analysis is recognized, the companion Iʿrāb Book records the alternatives."
+          }
+        ]
+      }
+    ],
+    "irab": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "How to read the analyses",
+          "ar": "مُقَدِّمَةٌ إِلَى الْإِعْرَابِ"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "This companion volume explains each word and grammatical relation in Sūrat al-Nās. It is intended as a teacher-supported reference after the Student Book. The main analysis is placed first; where classical grammarians allow alternatives, these are stated explicitly rather than presented as a single unquestionable reading."
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Term",
+                "Meaning"
+              ],
+              [
+                "حَرْفُ جَرٍّ",
+                "A preposition; governs a following genitive noun"
+              ],
+              [
+                "مَجْرُورٌ",
+                "Genitive; commonly marked here by kasrah"
+              ],
+              [
+                "مُضَافٌ / مُضَافٌ إِلَيْهِ",
+                "Two linked members of an iḍāfah construction"
+              ],
+              [
+                "نَعْتٌ",
+                "An adjective or modifier following its described noun"
+              ],
+              [
+                "بَدَلٌ / عَطْفُ بَيَانٍ",
+                "Recognised appositional/explanatory analyses"
+              ],
+              [
+                "صِلَةُ الْمَوْصُولِ",
+                "The clause that completes a relative pronoun"
+              ]
+            ]
+          },
+          {
+            "type": "subheading",
+            "title": {
+              "en": "Key observation",
+              "ar": "مُلَاحَظَةٌ مِحْوَرِيَّةٌ"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "The nominal expressions in this surah occur within genitive structures: after prepositions, in iḍāfah, or as words grammatically linked to those nouns. Its imperative and present verbs are distinct from these nominal forms."
+          }
+        ]
+      },
+      {
+        "id": "s2",
+        "title": {
+          "en": "Verse 1 — Detailed iʿrāb",
+          "ar": "إِعْرَابُ الْآيَةِ 1"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ  ﴿1﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "Say: I seek refuge in the Lord of humankind."
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Word / part",
+                "Detailed Arabic analysis",
+                "English reading guide"
+              ],
+              [
+                "قُلْ",
+                "فِعْلُ أَمْرٍ مَبْنِيٌّ عَلَى السُّكُونِ؛ فَاعِلُهُ ضَمِيرٌ مُسْتَتِرٌ وُجُوبًا تَقْدِيرُهُ أَنْتَ.",
+                "Imperative; hidden second-person subject."
+              ],
+              [
+                "أَعُوذُ",
+                "فِعْلٌ مُضَارِعٌ مَرْفُوعٌ بِالضَّمَّةِ الظَّاهِرَةِ؛ فَاعِلُهُ مُسْتَتِرٌ تَقْدِيرُهُ أَنَا. وَالْجُمْلَةُ مَقُولُ الْقَوْلِ.",
+                "Present; hidden first-person subject. The clause is what is said."
+              ],
+              [
+                "بِـ",
+                "حَرْفُ جَرٍّ مَبْنِيٌّ لَا مَحَلَّ لَهُ مِنَ الْإِعْرَابِ.",
+                "Prefixed preposition."
+              ],
+              [
+                "رَبِّ",
+                "اسْمٌ مَجْرُورٌ بِالْبَاءِ، وَعَلَامَةُ جَرِّهِ الْكَسْرَةُ؛ وَهُوَ مُضَافٌ. وَالْجَارُّ وَالْمَجْرُورُ مُتَعَلِّقَانِ بِأَعُوذُ.",
+                "Genitive after بِـ; first term of iḍāfah."
+              ],
+              [
+                "ٱلنَّاسِ",
+                "مُضَافٌ إِلَيْهِ مَجْرُورٌ بِالْكَسْرَةِ الظَّاهِرَةِ.",
+                "Genitive second term of iḍāfah."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Sentence relation: the clause أَعُوذُ بِرَبِّ ٱلنَّاسِ is the content of the command قُلْ; the prepositional phrase بِرَبِّ is linked to أَعُوذُ."
+          }
+        ]
+      },
+      {
+        "id": "s3",
+        "title": {
+          "en": "Verse 2 — Detailed iʿrāb",
+          "ar": "إِعْرَابُ الْآيَةِ 2"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "مَلِكِ ٱلنَّاسِ  ﴿2﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "The Sovereign of humankind."
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Word / part",
+                "Detailed Arabic analysis",
+                "English reading guide"
+              ],
+              [
+                "مَلِكِ",
+                "بَدَلٌ مَجْرُورٌ مِنْ رَبِّ، وَعَلَامَةُ جَرِّهِ الْكَسْرَةُ، وَهُوَ مُضَافٌ. وَيَجُوزُ إِعْرَابُهُ نَعْتًا أَوْ عَطْفَ بَيَانٍ.",
+                "Genitive apposition to رَبِّ; alternative modifier analyses."
+              ],
+              [
+                "ٱلنَّاسِ",
+                "مُضَافٌ إِلَيْهِ مَجْرُورٌ بِالْكَسْرَةِ الظَّاهِرَةِ.",
+                "Genitive dependent of مَلِكِ."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Teaching note: the case continues from verse 1. The three expressions رَبِّ / مَلِكِ / إِلَـٰهِ are not three unrelated nominative statements."
+          }
+        ]
+      },
+      {
+        "id": "s4",
+        "title": {
+          "en": "Verse 3 — Detailed iʿrāb",
+          "ar": "إِعْرَابُ الْآيَةِ 3"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "إِلَـٰهِ ٱلنَّاسِ  ﴿3﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "The God of humankind, worthy of their worship."
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Word / part",
+                "Detailed Arabic analysis",
+                "English reading guide"
+              ],
+              [
+                "إِلَـٰهِ",
+                "بَدَلٌ مَجْرُورٌ مِنْ رَبِّ أَوْ مِمَّا قَبْلَهُ، وَهُوَ مُضَافٌ؛ وَيَجُوزُ فِيهِ عَطْفُ الْبَيَانِ وَالنَّعْتُ.",
+                "Genitive apposition continuing the same construction."
+              ],
+              [
+                "ٱلنَّاسِ",
+                "مُضَافٌ إِلَيْهِ مَجْرُورٌ بِالْكَسْرَةِ الظَّاهِرَةِ.",
+                "Genitive second member of iḍāfah."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Teaching note: the case continues from verse 1. The three expressions رَبِّ / مَلِكِ / إِلَـٰهِ are not three unrelated nominative statements."
+          }
+        ]
+      },
+      {
+        "id": "s5",
+        "title": {
+          "en": "Verse 4 — Detailed iʿrāb",
+          "ar": "إِعْرَابُ الْآيَةِ 4"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ  ﴿4﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "From the evil of the whisperer who withdraws."
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Word / part",
+                "Detailed Arabic analysis",
+                "English reading guide"
+              ],
+              [
+                "مِن",
+                "حَرْفُ جَرٍّ مَبْنِيٌّ لَا مَحَلَّ لَهُ مِنَ الْإِعْرَابِ.",
+                "Preposition linked to أَعُوذُ."
+              ],
+              [
+                "شَرِّ",
+                "اسْمٌ مَجْرُورٌ بِمِنْ، وَعَلَامَةُ جَرِّهِ الْكَسْرَةُ، وَهُوَ مُضَافٌ.",
+                "Genitive after مِن; first member of iḍāfah."
+              ],
+              [
+                "ٱلْوَسْوَاسِ",
+                "مُضَافٌ إِلَيْهِ مَجْرُورٌ بِالْكَسْرَةِ الظَّاهِرَةِ.",
+                "Genitive dependent of شَرِّ."
+              ],
+              [
+                "ٱلْخَنَّاسِ",
+                "نَعْتٌ مَجْرُورٌ لِلْوَسْوَاسِ، وَعَلَامَةُ جَرِّهِ الْكَسْرَةُ.",
+                "Genitive adjective modifying ٱلْوَسْوَاسِ."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Sentence relation: مِن شَرِّ ... is another phrase governed by أَعُوذُ from verse 1; the noun ٱلْخَنَّاسِ follows the case of the noun it describes."
+          }
+        ]
+      },
+      {
+        "id": "s6",
+        "title": {
+          "en": "Verse 5 — Detailed iʿrāb",
+          "ar": "إِعْرَابُ الْآيَةِ 5"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ  ﴿5﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "Who whispers into the inner hearts of humankind."
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Word / part",
+                "Detailed Arabic analysis",
+                "English reading guide"
+              ],
+              [
+                "ٱلَّذِى",
+                "اسْمٌ مَوْصُولٌ مَبْنِيٌّ عَلَى السُّكُونِ فِي مَحَلِّ جَرٍّ نَعْتٌ لِلْوَسْوَاسِ. وَرُوِيَتْ أَوْجُهٌ إِعْرَابِيَّةٌ أُخْرَى.",
+                "Relative pronoun in the genitive position of a modifier."
+              ],
+              [
+                "يُوَسْوِسُ",
+                "فِعْلٌ مُضَارِعٌ مَرْفُوعٌ بِالضَّمَّةِ؛ فَاعِلُهُ ضَمِيرٌ مُسْتَتِرٌ تَقْدِيرُهُ هُوَ. وَجُمْلَتُهُ صِلَةُ الْمَوْصُولِ لَا مَحَلَّ لَهَا.",
+                "Present verb; its clause completes ٱلَّذِى."
+              ],
+              [
+                "فِى",
+                "حَرْفُ جَرٍّ مَبْنِيٌّ لَا مَحَلَّ لَهُ.",
+                "Preposition related to يُوَسْوِسُ."
+              ],
+              [
+                "صُدُورِ",
+                "اسْمٌ مَجْرُورٌ بِفِي، وَعَلَامَةُ جَرِّهِ الْكَسْرَةُ، وَهُوَ مُضَافٌ.",
+                "Genitive after فِى; broken plural of صَدْر."
+              ],
+              [
+                "ٱلنَّاسِ",
+                "مُضَافٌ إِلَيْهِ مَجْرُورٌ بِالْكَسْرَةِ الظَّاهِرَةِ.",
+                "Genitive second member of iḍāfah."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Other recognised analyses permit a nominative or accusative resumption of ٱلَّذِى in an evaluative construction. The genitive modifier analysis is the most straightforward for this lesson."
+          }
+        ]
+      },
+      {
+        "id": "s7",
+        "title": {
+          "en": "Verse 6 — Detailed iʿrāb",
+          "ar": "إِعْرَابُ الْآيَةِ 6"
+        },
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ  ﴿6﴾"
+          },
+          {
+            "type": "paragraph",
+            "text": "From among jinn and humankind."
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Word / part",
+                "Detailed Arabic analysis",
+                "English reading guide"
+              ],
+              [
+                "مِنَ",
+                "حَرْفُ جَرٍّ؛ وَفُتِحَتْ نُونُهُ لِالْتِقَاءِ السَّاكِنَيْنِ. وَمِنْ أَوْجُهِهِ أَنْ تَكُونَ بَيَانِيَّةً أَوِ ابْتِدَائِيَّةً أَوْ تَبْعِيضِيَّةً.",
+                "Preposition; several recognised semantic analyses."
+              ],
+              [
+                "ٱلْجِنَّةِ",
+                "اسْمٌ مَجْرُورٌ بِمِنْ، وَعَلَامَةُ جَرِّهِ الْكَسْرَةُ الظَّاهِرَةُ.",
+                "Genitive after مِن; means jinn."
+              ],
+              [
+                "وَ",
+                "حَرْفُ عَطْفٍ مَبْنِيٌّ لَا مَحَلَّ لَهُ.",
+                "Coordinating conjunction."
+              ],
+              [
+                "ٱلنَّاسِ",
+                "اسْمٌ مَعْطُوفٌ عَلَى ٱلْجِنَّةِ مَجْرُورٌ بِالْكَسْرَةِ.",
+                "Genitive noun coordinated with ٱلْجِنَّةِ."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Alternative connections of مِنَ ٱلْجِنَّةِ include an explanatory phrase describing the whisperer, or a phrase indicating the source of whispering. Some grammarians attach it to an understood circumstantial expression (حَال). These are interpretive grammatical alternatives, not different Qur'anic wordings."
+          }
+        ]
+      },
+      {
+        "id": "s8",
+        "title": {
+          "en": "Connected Syntax Map",
+          "ar": "تَرَابُطُ التَّرَاكِيبِ"
+        },
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "قُلْ → its spoken content is أَعُوذُ بِرَبِّ ٱلنَّاسِ ..."
+          },
+          {
+            "type": "bullet",
+            "text": "أَعُوذُ → governs بِرَبِّ ٱلنَّاسِ and مِن شَرِّ ٱلْوَسْوَاسِ ..."
+          },
+          {
+            "type": "bullet",
+            "text": "رَبِّ → is clarified by مَلِكِ and إِلَـٰهِ, both genitive in the connected construction."
+          },
+          {
+            "type": "bullet",
+            "text": "ٱلْوَسْوَاسِ → is described by ٱلْخَنَّاسِ and by the relative clause ٱلَّذِى يُوَسْوِسُ ..."
+          },
+          {
+            "type": "bullet",
+            "text": "يُوَسْوِسُ → is connected with فِى صُدُورِ ٱلنَّاسِ; the final مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ further clarifies source/identity."
+          }
+        ]
+      },
+      {
+        "id": "s9",
+        "title": {
+          "en": "Morphology Index",
+          "ar": "فِهْرِسٌ صَرْفِيٌّ"
+        },
+        "blocks": [
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Word",
+                "Root",
+                "Form / note"
+              ],
+              [
+                "قُلْ",
+                "ق و ل",
+                "Imperative of hollow Form I verb قَالَ"
+              ],
+              [
+                "أَعُوذُ",
+                "ع و ذ",
+                "First-person present of عَاذَ"
+              ],
+              [
+                "مَلِكِ",
+                "م ل ك",
+                "Noun"
+              ],
+              [
+                "ٱلْوَسْوَاسِ",
+                "و س و س",
+                "Quadriliteral-root noun"
+              ],
+              [
+                "ٱلْخَنَّاسِ",
+                "خ ن س",
+                "Intensive pattern فَعَّال"
+              ],
+              [
+                "يُوَسْوِسُ",
+                "و س و س",
+                "Quadriliteral present, يُفَعْلِلُ"
+              ],
+              [
+                "صُدُورِ",
+                "ص د ر",
+                "Broken plural on فُعُول; singular صَدْر"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "s10",
+        "title": {
+          "en": "References and editorial basis",
+          "ar": "الْمَرَاجِعُ"
+        },
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Qur'anic text and verse numbering — https://quran.com/an-nas"
+          },
+          {
+            "type": "bullet",
+            "text": "Sūrah introduction and cause-of-revelation discussion - Ibn ʿĀshūr — https://quran.com/ar/an-nas/info"
+          },
+          {
+            "type": "bullet",
+            "text": "Tafsīr al-Saʿdī, Sūrat al-Nās — https://quran.ksu.edu.sa/tafseer/saadi/sura114.htm"
+          },
+          {
+            "type": "bullet",
+            "text": "Quranic Arabic Corpus, Sūrah 114 word-by-word morphology — https://corpus.quran.com/wordbyword.jsp?chapter=114&verse=1"
+          },
+          {
+            "type": "bullet",
+            "text": "Muḥyī al-Dīn al-Darwīsh, Iʿrāb al-Qurʾān wa Bayānuh — https://quranpedia.app/uloom/darwish/sura114-aya1.html"
+          },
+          {
+            "type": "bullet",
+            "text": "ʿAbdulWāḥid Ḥamīd, Access to Qur'anic Arabic, Selections, no. 110 — User-supplied course reference; 2003 revised edition"
+          },
+          {
+            "type": "paragraph",
+            "text": "The Qur'anic text is primary. The English translation, examples, tasks and simplified explanations in these materials are original educational wording, informed by the listed sources. Where more than one iʿrāb analysis is recognized, the companion Iʿrāb Book records the alternatives."
+          }
+        ]
+      }
+    ]
+  },
+  "answerKey": {
+    "S1": "B",
+    "S2": "D",
+    "S3": "A",
+    "S4": "C",
+    "S5": "B",
+    "S6": "A",
+    "S7": "D",
+    "S8": "C",
+    "S9": "B",
+    "S10": "A",
+    "S11": "C",
+    "S12": "D",
+    "S13": "B",
+    "S14": "A",
+    "S15": "C",
+    "S16": "D",
+    "S17": "A",
+    "S18": "B",
+    "S19": "C",
+    "S20": "D",
+    "A-M1": "B",
+    "A-M2": "C",
+    "A-M3": "A",
+    "A-M4": "D",
+    "A-M5": "A",
+    "B-M1": "B",
+    "B-M2": "D",
+    "B-M3": "C",
+    "B-M4": "B",
+    "B-M5": "A",
+    "B-M6": "D",
+    "C-M1": "C",
+    "C-M2": "A",
+    "C-M3": "D",
+    "C-M4": "B",
+    "D-M1": "A",
+    "D-M2": "D",
+    "D-M3": "C",
+    "F-M1": "B",
+    "F-M2": "C"
+  }
+}
