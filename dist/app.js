@@ -8,6 +8,7 @@ const nav = document.getElementById('primary-nav');
 const toastEl = document.getElementById('toast');
 const installButton = document.getElementById('install-button');
 let data;
+let surahs=[];
 let installPrompt = null;
 let toastTimer;
 const KEY = 'arabic-light-quranic-arabic-lesson01-v1';
@@ -86,10 +87,8 @@ function completion(){
 }
 
 function home(){
-  const p=completion();const q=quizStats();
   return `<header class="library-heading"><div class="eyebrow">ARABIC LIGHT ACADEMY · QUR'ANIC ARABIC</div><h1>${say('اختر كتابك','Choose your book')}</h1><p>${say('اختر أحد الكتب الثلاثة، ثم اختر السورة التي تريد دراستها.','Select one of the three books, then choose the Qur’anic surah you want to study.')}</p></header>
-  <section class="book-catalog" aria-label="${say('الكتب المتاحة','Available books')}">${bookOptions.map(b=>`<article class="catalog-book"><button class="catalog-cover-link" data-choose-book="${b.key}" aria-label="${say('اختر','Choose')} ${esc(b.label)}"><img src="./covers/${b.cover}" alt="${esc(b.label)} cover" loading="lazy"></button><div class="catalog-details"><span class="catalog-kicker">BOOK ${b.num} <span aria-hidden="true">·</span> QUR'ANIC ARABIC</span><h2>${say(b.ar,b.label)}</h2><p>${say(b.descAr,b.desc)}</p><div class="catalog-meta"><span>${say('سورة متاحة الآن','1 surah available')}</span><span>${say('الدرس الأول','Lesson 01')}</span></div><button class="primary-button catalog-action" data-choose-book="${b.key}">${say('اختر الكتاب','Choose this book')} <span aria-hidden="true">${say('←','→')}</span></button></div></article>`).join('')}</section>
-  <section class="library-summary"><div><strong>${say('تقدّمك الدراسي','Your learning progress')}</strong><p>${say('تُحفظ إجاباتك وإنجازاتك على هذا الجهاز.','Your answers and progress are saved on this device.')}</p></div><div class="library-mini-stats"><span>${p.percent}% ${say('مكتمل','complete')}</span><span>${q.attempted}/${q.total} ${say('أسئلة','questions')}</span></div><button class="secondary-button" data-open="progress">${say('عرض التقدّم','View progress')} ${say('←','→')}</button></section>`;
+  <section class="book-catalog" aria-label="${say('الكتب الثلاثة','Three books')}">${bookOptions.map(b=>`<button type="button" class="book-option" data-choose-book="${b.key}" aria-label="${say('اختر','Choose')} ${esc(b.label)}"><img src="./covers/${b.cover}" alt="" loading="lazy"><span class="book-option-details"><span class="catalog-kicker">BOOK ${b.num}</span><strong>${say(b.ar,b.label)}</strong><span class="book-option-ar" lang="ar" dir="rtl">${b.ar}</span><span class="book-option-cta">${say('عرض سور القرآن الـ١١٤','Browse all 114 Surahs')} <span aria-hidden="true">${say('←','→')}</span></span></span></button>`).join('')}</section>`;
 }
 
 function surahsPage(){
@@ -97,8 +96,12 @@ function surahsPage(){
   return `<nav class="journey-breadcrumb" aria-label="Breadcrumb"><button data-open="home">${say('الكتب','All books')}</button><span aria-hidden="true">/</span><strong>${say(b.ar,b.label)}</strong></nav>
   <header class="library-heading surah-heading"><div class="eyebrow">${say('الخطوة الثانية · اختر السورة','STEP 02 · SELECT A SURAH')}</div><h1>${say('اختر السورة القرآنية','Choose a Surah')}</h1><p>${say('أنت الآن في','You selected the')} <strong>${say(b.ar,b.label)}</strong>. ${say('اختر السورة للانتقال إلى محتوى هذا الكتاب.','Choose a surah to open its lessons in this book.')}</p></header>
   <div class="selected-book-strip"><img src="./covers/${b.cover}" alt="" loading="lazy"><div><small>${say('الكتاب المحدد','SELECTED BOOK')}</small><strong>${say(b.ar,b.label)}</strong></div><button data-open="home">${say('تغيير الكتاب','Change book')}</button></div>
-  <section class="surah-choices" aria-label="${say('السور المتاحة','Available surahs')}"><h2>${say('السور المتاحة','Available now')}</h2><button class="surah-choice" data-open-surah="${b.key}"><span class="surah-number">114</span><span class="surah-choice-title"><strong>Surah An-Nās</strong><span lang="ar" dir="rtl">سُورَةُ النَّاسِ</span><small>${say('٦ آيات · الجزء الثلاثون · الدرس الأول','6 verses · Juzʾ 30 · Lesson 01')}</small></span><span class="surah-ready">${say('متاحة','Available')}</span><span class="surah-arrow" aria-hidden="true">${say('←','→')}</span></button></section>
-  <p class="surah-future">${say('ستظهر السور التالية هنا عند إضافة دروسها المعتمدة.','Additional surahs will appear here as their approved lessons are added.')}</p>`;
+  <section class="surah-choices" aria-label="${say('جميع سور القرآن','All Quranic Surahs')}">
+    <div class="surah-toolbar"><div><h2>${say('جميع سور القرآن الكريم','All 114 Surahs')}</h2><p>${say('سورة الناس متاحة الآن، والباقي قيد الإعداد.','Surah An-Nas is ready; the other lessons are coming soon.')}</p></div><label class="surah-search-wrap"><span class="surah-search-icon" aria-hidden="true">⌕</span><input id="surah-search" type="search" autocomplete="off" placeholder="${say('ابحث باسم السورة أو رقمها…','Search by name or number…')}" aria-label="${say('ابحث عن سورة','Search for a Surah')}"></label></div>
+    <div class="surah-list-status" aria-live="polite"><span id="surah-match-count">${say('١١٤ سورة','114 Surahs')}</span><span class="surah-ready">${say('الناس متاحة','An-Nas available')}</span></div>
+    <div class="surah-grid">${surahs.map(([number,en,ar])=>{const ready=number===114;return `<button type="button" class="surah-choice ${ready?'surah-is-ready':'surah-is-pending'}" ${ready?`data-open-surah="${b.key}"`:'disabled'} data-surah-search="${esc(`${number} ${en} ${ar}`.toLocaleLowerCase())}" aria-label="${esc(say(`سورة ${ar}، ${ready?'متاحة':'قيد الإعداد'}`,`Surah ${en}, ${ready?'available':'coming soon'}`))}"><span class="surah-number">${number}</span><span class="surah-choice-title"><strong>${esc(en)}</strong><span lang="ar" dir="rtl">${esc(ar)}</span></span><span class="surah-status ${ready?'surah-status-ready':''}">${ready?say('متاحة','Open lesson'):say('قريبًا','Coming soon')}</span></button>`}).join('')}</div>
+    <p id="surah-no-results" class="surah-no-results" hidden>${say('لم نعثر على سورة بهذا الاسم.','No matching Surah found.')}</p>
+  </section>`;
 }
 
 function blockHTML(block,book){
@@ -251,7 +254,15 @@ contentEl.addEventListener('click',e=>{
 });
 contentEl.addEventListener('keydown',e=>{const row=e.target.closest('.vocab-row');if(row&&(e.key==='Enter'||e.key===' ')){e.preventDefault();row.click()}});
 contentEl.addEventListener('change',e=>{if(e.target.matches('[data-quiz]')){const id=e.target.dataset.quiz;progress.chosen[id]=e.target.value;delete progress.checked[id];store();const f=document.getElementById(`feedback-${id}`);if(f)f.innerHTML=''}});
-contentEl.addEventListener('input',e=>{if(e.target.matches('[data-written]')){progress.written[e.target.dataset.written]=e.target.value;store()}});
+contentEl.addEventListener('input',e=>{
+  if(e.target.matches('[data-written]')){progress.written[e.target.dataset.written]=e.target.value;store();return}
+  if(e.target.matches('#surah-search')){
+    const term=e.target.value.trim().toLocaleLowerCase();let visible=0;
+    contentEl.querySelectorAll('[data-surah-search]').forEach(card=>{const match=card.dataset.surahSearch.includes(term);card.hidden=!match;if(match)visible++});
+    const count=document.getElementById('surah-match-count');if(count)count.textContent=say(`${visible} سورة`,`${visible} of 114 Surahs`);
+    const none=document.getElementById('surah-no-results');if(none)none.hidden=visible!==0;
+  }
+});
 document.getElementById('lang-toggle').addEventListener('click',()=>{ui.lang=ui.lang==='ar'?'en':'ar';store();render()});
 window.addEventListener('hashchange',()=>{parseLocation();render()});
 window.addEventListener('online',updateOnline);window.addEventListener('offline',updateOnline);
@@ -262,8 +273,11 @@ window.addEventListener('appinstalled',()=>{installButton.hidden=true;toast('ت�
 
 async function init(){
   try{
-    const response=await fetch('./content.json');if(!response.ok)throw new Error('Failed to load content');
-    data=await response.json();parseLocation();render();updateOnline();
+    const [response,surahResponse]=await Promise.all([fetch('./content.json'),fetch('./surahs.json')]);
+    if(!response.ok||!surahResponse.ok)throw new Error('Failed to load library content');
+    [data,surahs]=await Promise.all([response.json(),surahResponse.json()]);
+    if(surahs.length!==114)throw new Error('Incomplete Surah catalogue');
+    parseLocation();render();updateOnline();
     if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
   }catch(error){contentEl.innerHTML='<div class="empty">تعذّر تحميل بيانات الكتاب. رجاءً تحقق من الاتصال وأعد فتح التطبيق.</div>';console.error(error)}
 }
