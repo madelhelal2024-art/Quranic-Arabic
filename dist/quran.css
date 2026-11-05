@@ -1,0 +1,62 @@
+/* Quranic text must be rendered as actual Unicode, not a screenshot or a
+   bidirectional text string with a Western-numbered verse suffix. */
+.quran-verse {
+  font-weight: 400;
+  line-height: 1.9;
+  padding: 27px 22px 25px;
+}
+.quran-verse-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  gap: 12px;
+  direction: rtl;
+}
+.quran-verse-text {
+  font-family: 'Amiri Quran', 'Amiri', 'Traditional Arabic', 'Noto Naskh Arabic', serif;
+  font-size: clamp(31px, 3.35vw, 43px);
+  font-weight: 400;
+  font-synthesis: none;
+  line-height: 2;
+  text-align: center;
+  unicode-bidi: isolate;
+  overflow-wrap: normal;
+  white-space: normal;
+  min-width: 0;
+}
+.ayah-number {
+  position: relative;
+  flex: 0 0 37px;
+  width: 37px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  margin-inline-start: 1px;
+  color: #24634e;
+  font: 700 19px/1 'Amiri', 'Traditional Arabic', serif;
+  unicode-bidi: isolate;
+  vertical-align: middle;
+}
+.ayah-number::before {
+  content: '';
+  position: absolute;
+  inset: 6px 5px;
+  z-index: 0;
+  background: #c8e9d9;
+  border-radius: 10px 60% 10px 60%;
+  transform: rotate(45deg);
+}
+.ayah-number > span { position: relative; z-index: 1; }
+.study-table td[dir='rtl'],
+.study-table th[dir='rtl'] {
+  font-family: 'Amiri', 'Traditional Arabic', 'Noto Naskh Arabic', serif;
+  font-size: 17px;
+  line-height: 1.9;
+}
+@media (max-width: 620px) {
+  .quran-verse { padding: 23px 13px 19px; }
+  .quran-verse-line { gap: 8px; }
+  .quran-verse-text { font-size: clamp(27px, 7vw, 34px); line-height: 2; }
+  .ayah-number { flex-basis: 31px; width: 31px; height: 35px; font-size: 17px; }
+}

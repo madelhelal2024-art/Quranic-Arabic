@@ -27,6 +27,16 @@ function store(){try{localStorage.setItem(KEY,JSON.stringify({...progress,lang:u
 function esc(value=''){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function dir(text){return /^[\s\d\p{P}\p{S}]*[\u0600-\u06ff]/u.test(text)?'rtl':'ltr'}
 function fmt(text){return esc(text).replace(/https?:\/\/[^\s<]+/g,url=>`<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`)}
+// Keep Quranic text as one untouched Uthmani-script string. Verse numbers are
+// separate presentation elements: combining Latin digits with RTL Quran text
+// previously caused the markers to jump or appear in the wrong reading order.
+function quranVerseHTML(source,verseNumber){
+  const match=String(source).match(/\s+﴿\s*([0-9٠-٩]+)\s*﴾\s*$/u);
+  const text=match?source.slice(0,match.index).trim():String(source).trim();
+  const number=verseNumber||Number(match?.[1]?.replace(/[٠-٩]/g,d=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(d))))||0;
+  const arabicDigits=String(number).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[Number(d)]);
+  return `<div class="quran-verse" lang="ar" dir="rtl"><span class="quran-verse-line"><span class="quran-verse-text">${esc(text)}</span><span class="ayah-number" lang="ar" dir="ltr" aria-label="${say(`الآية ${arabicDigits}`,`Verse ${number}`)}"><span aria-hidden="true">${arabicDigits}</span></span></span></div>`;
+}
 function toast(message){clearTimeout(toastTimer);toastEl.textContent=message;toastEl.classList.add('show');toastTimer=setTimeout(()=>toastEl.classList.remove('show'),2300)}
 function bookName(book){return t(book)}
 function sectionKey(book,index){return `${book}-${index}`}
@@ -123,12 +133,12 @@ function book(){
   const sections=data.books[ui.book]||[];
   ui.index=Math.min(ui.index,sections.length-1);
   const section=sections[ui.index];if(!section)return `<p class="empty">لا يوجد محتوى.</p>`;
-  const verseMatch=ui.book==='student'?section.title.en.match(/^Verse (\d+)$/):null;
-  const isVerse=!!verseMatch;
+  const verseMatch=section.title.en.match(/^Verse (\d+)(?:\s+—\s+Detailed iʿrāb)?$/);
+  const isVerse=ui.book==='student'&&!!verseMatch;
   const blocks=section.blocks.slice();let introduction='';
-  if(isVerse&&blocks[0]?.type==='paragraph'){
+  if((isVerse||ui.book==='irab'&&!!verseMatch)&&blocks[0]?.type==='paragraph'){
     const original=blocks.shift().text;
-    introduction=`<div class="quran-verse" dir="rtl">${esc(original)}</div>`;
+    introduction=quranVerseHTML(original,Number(verseMatch[1]));
     if(blocks[0]?.type==='paragraph')introduction+=`<p class="translation">${esc(blocks.shift().text)}</p>`;
   }
   const key=sectionKey(ui.book,ui.index);const isDone=!!progress.done[key];

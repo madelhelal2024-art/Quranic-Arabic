@@ -22,7 +22,7 @@ python3 -m http.server 8000 --directory dist
 
 Open <http://localhost:8000>.
 
-The application is a buildless PWA: `index.html`, `style.css`, `app.js`, `content.json`, `manifest.webmanifest`, and `sw.js`. For installation/offline support, deploy over HTTPS or localhost.
+The application is a buildless PWA: `index.html`, `style.css`, `quran.css`, `app.js`, `content.json`, `manifest.webmanifest`, and `sw.js`. For installation/offline support, deploy over HTTPS or localhost.
 
 ## Update the source material
 
@@ -46,3 +46,14 @@ The converter mechanically preserves source paragraph text, section order, and t
 
 This is a one-lesson app (Surah An-Nās). It does not claim to include other surahs, cloud accounts, or server-side grades. Data saved in one browser will not automatically sync to another device.
 Audio is streamed from a third-party provider and requires internet access. No audio recordings are bundled or redistributed by this repository. The reciter/rightsholder retains rights to the recordings; see [Al Quran Cloud's terms](https://alquran.cloud/terms-and-conditions).
+
+# Qur'anic text verification
+
+The six verse strings in the Student and Iʿrāb Books follow the Uthmani
+orthography shown on [Quran.com, Surah An-Nās](https://quran.com/ar/an-nas).
+`python3 scripts/check-quran-verses.py` checks both books against that reference.
+The PWA renders the immutable verse text independently of its Arabic-Indic
+verse-number badge to prevent right-to-left number reordering. The open-source
+[Amiri Quran](https://github.com/aliftype/amiri) typeface is loaded for Qur'anic
+passages, with local Arabic-font fallbacks when offline. Lessons, translations,
+notes, exercises and answer keys remain unchanged from the approved books.
