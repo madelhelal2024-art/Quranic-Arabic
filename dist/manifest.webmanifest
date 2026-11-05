@@ -1,14 +1,14 @@
 {
   "name": "عَرَبِيَّةُ الْقُرْآنِ — Arabic Light Academy",
-  "short_name": "عربية القرآن",
-  "description": "تعلم العربية من خلال سورة الناس: دراسة وتدريبات وإعراب",
+  "short_name": "Qur'anic Arabic",
+  "description": "Learn Qur'anic Arabic through Surah An-Nās: Student Book, Workbook and detailed Iʿrāb.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#777B8E",
-  "lang": "ar",
-  "dir": "rtl",
+  "lang": "en",
+  "dir": "ltr",
   "icons": [
     {"src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
     {"src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}

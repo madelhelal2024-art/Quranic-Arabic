@@ -1,0 +1,119 @@
+/* The English interface uses natural left-to-right layout. Qur'anic passages
+   and Arabic learning content retain independent RTL direction. */
+html[dir='ltr'] .sidebar {
+  border-left: 0;
+  border-right: 1px solid var(--line);
+}
+html[dir='ltr'] .nav-link,
+html[dir='ltr'] .chapter-button { text-align: left; }
+html[dir='ltr'] .nav-link.active { box-shadow: inset 3px 0 var(--copper); }
+html[dir='ltr'] .nav-link small { text-align: left; }
+html[dir='ltr'] .chapter-done { margin-right: 0; margin-left: auto; }
+html[dir='ltr'] .hero .hero-tag,
+html[dir='ltr'] .hero .english,
+html[dir='ltr'] .section-header .overline,
+html[dir='ltr'] .lesson-header .lesson-en { text-align: left; }
+html[dir='ltr'] .study-table td + td,
+html[dir='ltr'] .study-table th + th { border-right: 0; border-left: 1px solid var(--line); }
+html[dir='ltr'] .body-bullet[dir='ltr'] { padding: 0 0 0 18px; }
+html[dir='ltr'] .body-bullet[dir='ltr']::before { left: 0; right: auto; }
+html[dir='ltr'] .verse-tab { text-align: left; }
+html[dir='ltr'] .verse-tab.selected { box-shadow: inset 3px 0 var(--copper); }
+html[dir='ltr'] .verse-tab small,
+html[dir='ltr'] .verse-detail-heading small { text-align: left; }
+html[dir='ltr'] .progress-line { text-align: left; }
+html[dir='rtl'] .progress-line { text-align: right; }
+.tab-ar { unicode-bidi: isolate; }
+
+.library-heading { margin: 0 0 24px; max-width: 900px; }
+.library-heading .eyebrow { display: block; margin-bottom: 9px; }
+.library-heading h1 { margin: 0 0 10px; color: var(--head); font-size: clamp(27px, 3.4vw, 42px); line-height: 1.3; letter-spacing: -.7px; }
+.library-heading p { max-width: 760px; color: var(--muted); line-height: 1.85; margin: 0; font-size: 14px; }
+.book-catalog { display: grid; gap: 17px; }
+.catalog-book {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: clamp(20px, 3.3vw, 36px);
+  align-items: center;
+  padding: 21px 26px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  box-shadow: 0 13px 35px rgba(77, 66, 70, .035);
+  transition: box-shadow .2s, transform .2s;
+}
+.catalog-book:hover { box-shadow: 0 15px 38px rgba(77,66,70,.085); transform: translateY(-1px); }
+.catalog-cover-link {
+  display: block;
+  border: 1px solid #e7e1df;
+  border-radius: 6px;
+  background: #fff;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(44,42,50,.09);
+  line-height: 0;
+}
+.catalog-cover-link img { display: block; width: 100%; height: auto; aspect-ratio: 524 / 740; object-fit: cover; }
+.catalog-details { min-width: 0; }
+.catalog-kicker { font-size: 10px; letter-spacing: 1.5px; font-weight: 800; color: var(--copper); }
+.catalog-details h2 { font-size: clamp(22px,2.5vw,30px); color: var(--head); margin: 9px 0 11px; font-weight: 760; }
+.catalog-details p { margin: 0; color: #777a88; line-height: 1.8; font-size: 13.5px; max-width: 800px; }
+.catalog-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin: 16px 0; }
+.catalog-meta span { font-size: 11px; color: #737887; background: #f5f3f4; border: 1px solid #efebeb; border-radius: 20px; padding: 5px 11px; }
+.catalog-action { min-height: 38px; padding: 9px 16px; font-size: 12px; }
+
+.library-summary { margin-top: 25px; padding: 22px; border: 1px solid #eae5e3; border-radius: 16px; background: var(--warm); display: flex; align-items: center; gap: 18px; justify-content: space-between; flex-wrap: wrap; }
+.library-summary strong { color: var(--head); font-size: 15px; }
+.library-summary p { margin: 7px 0 0; font-size: 12px; color: var(--muted); }
+.library-mini-stats { display: flex; gap: 15px; font-size: 12px; font-weight: 700; color: var(--copper); }
+
+.journey-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 25px; font-size: 12px; color: #a09ba4; }
+.journey-breadcrumb button { background: transparent; border: 0; padding: 0; color: var(--copper); font-size: inherit; font-weight: 700; }
+.journey-breadcrumb button:hover { text-decoration: underline; }
+.journey-breadcrumb strong { color: var(--head); font-weight: 700; }
+.surah-heading { margin-bottom: 27px; }
+.surah-heading p strong { color: var(--head); }
+.selected-book-strip { display: flex; align-items: center; gap: 14px; padding: 13px 16px; background: #fff; border: 1px solid var(--line); border-radius: 15px; max-width: 810px; margin-bottom: 29px; }
+.selected-book-strip img { width: 47px; height: 65px; object-fit: cover; border: 1px solid var(--line); border-radius: 3px; }
+.selected-book-strip div { display: flex; flex-direction: column; gap: 6px; }
+.selected-book-strip small { font-size: 10px; font-weight: 800; letter-spacing: 1px; color: var(--copper); }
+.selected-book-strip strong { color: var(--head); font-size: 15px; }
+.selected-book-strip button { margin-inline-start: auto; padding: 10px 13px; color: var(--copper); background: var(--warm); border: 1px solid #eddfd4; border-radius: 9px; font-size: 12px; font-weight: 700; }
+.surah-choices { max-width: 900px; }
+.surah-choices h2 { color: var(--head); margin: 0 0 13px; font-size: 19px; }
+.surah-choice { width: 100%; display: grid; grid-template-columns: 64px minmax(0,1fr) auto 24px; align-items: center; gap: 18px; background: #fff; border: 1px solid #e9e4e2; border-radius: 16px; padding: 22px; text-align: start; box-shadow: var(--shadow); transition: .2s; }
+.surah-choice:hover { border-color: #d9ad8f; transform: translateY(-1px); }
+.surah-number { width: 60px; height: 60px; display: grid; place-items: center; border-radius: 16px; color: var(--copper); background: var(--warm); font-weight: 800; font-size: 23px; }
+.surah-choice-title { display: flex; min-width: 0; flex-direction: column; gap: 4px; color: var(--head); }
+.surah-choice-title strong { font-size: 19px; }
+.surah-choice-title > span { color: var(--copper); align-self: start; font-family: 'Amiri', 'Traditional Arabic', serif; font-size: 21px; }
+.surah-choice-title small { color: var(--muted); font-size: 12px; }
+.surah-ready { background: #edf7f1; color: #48866b; border: 1px solid #d1e9da; border-radius: 30px; font-size: 11px; font-weight: 800; padding: 7px 12px; }
+.surah-arrow { font-size: 23px; color: var(--copper); }
+.surah-future { color: var(--muted); font-size: 12px; line-height: 1.8; margin-top: 19px; }
+
+@media (max-width: 880px) {
+  .catalog-book { grid-template-columns: 110px minmax(0,1fr); padding: 17px; gap: 18px; }
+  .catalog-details h2 { font-size: 22px; }
+}
+@media (max-width: 620px) {
+  .library-heading h1 { font-size: 27px; }
+  .catalog-book { grid-template-columns: 88px minmax(0,1fr); gap: 13px; padding: 12px; align-items: start; }
+  .catalog-cover-link { margin-top: 5px; }
+  .catalog-kicker { font-size: 9px; letter-spacing: .5px; }
+  .catalog-details h2 { font-size: 19px; margin: 5px 0 7px; }
+  .catalog-details p { font-size: 12px; line-height: 1.7; }
+  .catalog-meta { margin: 10px 0; gap: 5px; }
+  .catalog-meta span { font-size: 9px; padding: 4px 7px; }
+  .catalog-action { font-size: 11px; min-height: 34px; padding: 7px 10px; }
+  .library-summary { align-items: start; flex-direction: column; }
+  .selected-book-strip { padding: 11px; }
+  .selected-book-strip button { font-size: 11px; }
+  .surah-choice { grid-template-columns: 43px minmax(0,1fr) 18px; padding: 15px; gap: 11px; }
+  .surah-number { width: 43px; height: 48px; font-size: 18px; border-radius: 11px; }
+  .surah-ready { grid-column: 2; justify-self: start; font-size: 10px; }
+  .surah-arrow { grid-column: 3; grid-row: 1; }
+  .surah-choice-title strong { font-size: 16px; }
+  .surah-choice-title > span { font-size: 18px; }
+  .surah-choice-title small { font-size: 11px; }
+}

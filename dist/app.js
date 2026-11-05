@@ -13,14 +13,14 @@ let toastTimer;
 const KEY = 'arabic-light-quranic-arabic-lesson01-v1';
 
 const labels = {
-  ar: {home:'الرئيسية',student:'كتاب الطالب',workbook:'كتاب التدريبات',irab:'كتاب الإعراب',progress:'تقدّمي',open:'ابدأ التعلّم',continue:'استكمل رحلتك',units:'محتويات الكتاب',complete:'أنهيت هذا القسم',completed:'تم إنجاز القسم',previous:'السابق',next:'التالي',check:'تحقق من الإجابة',pick:'اختر إجابة أولًا',right:'إجابة صحيحة، أحسنت!',wrong:'حاول مرة أخرى',saved:'إجابتك محفوظة على هذا الجهاز',done:'تم حفظ تقدّمك',learn:'الدرس الأول · سورة الناس',module:'أقسام المنهج',quiz:'سؤال اختيار من متعدد',answers:'إجابات صحيحة',written:'تدريب كتابي',revealing:'اضغط الكلمة لإظهار المعنى',local:'يُحفظ تقدّمك على هذا الجهاز فقط',review:'تعلّم · تدرّب · حلّل'},
-  en: {home:'Overview',student:'Student Book',workbook:'Workbook',irab:'Iʿrāb Book',progress:'My Progress',open:'Start learning',continue:'Continue learning',units:'Book contents',complete:'Mark section complete',completed:'Section completed',previous:'Previous',next:'Next',check:'Check answer',pick:'Choose an answer first',right:'Correct! Well done.',wrong:'Try again',saved:'Saved on this device',done:'Progress saved',learn:'Lesson 01 · Surah An-Nās',module:'Study modules',quiz:'Multiple-choice question',answers:'Correct answers',written:'Written exercise',revealing:'Tap a word to reveal its meaning',local:'Your progress is saved on this device only',review:'Study · Practise · Analyse'}
+  ar: {home:'مكتبة الكتب',surahs:'اختر السورة',student:'كتاب الطالب',workbook:'كتاب التدريبات',irab:'كتاب الإعراب',progress:'تقدّمي',open:'ابدأ التعلّم',continue:'استكمل رحلتك',units:'محتويات الكتاب',complete:'أنهيت هذا القسم',completed:'تم إنجاز القسم',previous:'السابق',next:'التالي',check:'تحقق من الإجابة',pick:'اختر إجابة أولًا',right:'إجابة صحيحة، أحسنت!',wrong:'حاول مرة أخرى',saved:'إجابتك محفوظة على هذا الجهاز',done:'تم حفظ تقدّمك',learn:'الدرس الأول · سورة الناس',module:'أقسام المنهج',quiz:'سؤال اختيار من متعدد',answers:'إجابات صحيحة',written:'تدريب كتابي',revealing:'اضغط الكلمة لإظهار المعنى',local:'يُحفظ تقدّمك على هذا الجهاز فقط',review:'تعلّم · تدرّب · حلّل'},
+  en: {home:'Library',surahs:'Choose a Surah',student:'Student Book',workbook:'Workbook',irab:'Iʿrāb Book',progress:'My Progress',open:'Start learning',continue:'Continue learning',units:'Book contents',complete:'Mark section complete',completed:'Section completed',previous:'Previous',next:'Next',check:'Check answer',pick:'Choose an answer first',right:'Correct! Well done.',wrong:'Try again',saved:'Saved on this device',done:'Progress saved',learn:'Lesson 01 · Surah An-Nās',module:'Study modules',quiz:'Multiple-choice question',answers:'Correct answers',written:'Written exercise',revealing:'Tap a word to reveal its meaning',local:'Your progress is saved on this device only',review:'Study · Practise · Analyse'}
 };
 
 function loadStore(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch{return{}}}
 const saved = loadStore();
 const progress = {done:saved.done||{},chosen:saved.chosen||{},checked:saved.checked||{},written:saved.written||{}};
-const ui = {book:'home',index:0,versePart:null,lang:saved.lang==='en'?'en':'ar'};
+const ui = {book:'home',selectedBook:'student',index:0,versePart:null,lang:saved.lang==='ar'?'ar':'en'};
 const t = key => labels[ui.lang][key]||key;
 const say = (ar,en) => ui.lang==='en'?en:ar;
 function store(){try{localStorage.setItem(KEY,JSON.stringify({...progress,lang:ui.lang}))}catch{}}
@@ -40,17 +40,34 @@ function quranVerseHTML(source,verseNumber){
 function toast(message){clearTimeout(toastTimer);toastEl.textContent=message;toastEl.classList.add('show');toastTimer=setTimeout(()=>toastEl.classList.remove('show'),2300)}
 function bookName(book){return t(book)}
 function sectionKey(book,index){return `${book}-${index}`}
+const bookOptions=[
+  {key:'student',cover:'student.png',num:'01',label:'Student Book',ar:'كتاب الطالب',desc:'Learn the Qur’anic words, overall meaning, grammar, verb forms, rhetorical features and language insights for each verse.',descAr:'ادرس كلمات القرآن ومعاني الآيات وقواعدها ولمساتها البلاغية وفوائدها اللغوية.'},
+  {key:'workbook',cover:'workbook.png',num:'02',label:'Workbook',ar:'كتاب التدريبات',desc:'Practise what you learn with written activities, interactive multiple-choice questions and immediate answer checks.',descAr:'طبّق ما تعلمته بالتدريبات الكتابية وأسئلة الاختيار من متعدد والتصحيح الفوري.'},
+  {key:'irab',cover:'irab.png',num:'03',label:'Iʿrāb Book',ar:'كتاب الإعراب',desc:'Explore detailed word-by-word grammatical analysis, connected syntax and morphology for every verse.',descAr:'تعمّق في الإعراب التفصيلي للكلمات والتراكيب والفوائد الصرفية.'}
+];
+function chooseBook(book,scroll=true){
+  if(!data?.books[book])return;
+  ui.book='surahs';ui.selectedBook=book;ui.index=0;ui.versePart=null;
+  const next=`#surahs/${book}`;
+  if(location.hash!==next)history.replaceState(null,'',next);
+  render();if(scroll)window.scrollTo({top:0,behavior:'smooth'});
+}
 function jump(book,index=0,scroll=true){
-  ui.book=book;ui.index=Math.max(0,Math.min(index,(data?.books[book]?.length||1)-1));ui.versePart=null;
+  if(book==='surahs')return chooseBook(ui.selectedBook,scroll);
+  ui.book=book;if(data?.books[book])ui.selectedBook=book;
+  ui.index=Math.max(0,Math.min(index,(data?.books[book]?.length||1)-1));ui.versePart=null;
   const next=book==='home'?'#home':book==='progress'?'#progress':`#${book}/${ui.index+1}`;
   if(location.hash!==next)history.replaceState(null,'',next);
   render();if(scroll)window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function parseLocation(){
+  const surahMatch=location.hash.match(/^#surahs\/(student|workbook|irab)$/);
+  if(surahMatch){ui.book='surahs';ui.selectedBook=surahMatch[1];ui.index=0;ui.versePart=null;return}
   const match=location.hash.match(/^#(home|progress|student|workbook|irab)(?:\/(\d+))?$/);
   if(!match)return;
   ui.book=match[1];ui.index=Math.max(0,(Number(match[2])||1)-1);ui.versePart=null;
+  if(data?.books[ui.book])ui.selectedBook=ui.book;
 }
 
 function metric(value,title,en){return `<div class="metric"><div class="metric-value">${esc(value)}</div><div>${esc(title)}<small>${esc(en)}</small></div></div>`}
@@ -70,17 +87,18 @@ function completion(){
 
 function home(){
   const p=completion();const q=quizStats();
-  const modules=[
-    ['student','▤','01','دراسة الآيات','Student Book',say('معاني الكلمات، والمعنى الإجمالي، والنحو والصرف، واللمسات البلاغية والفوائد اللغوية.','Word meanings, overall meaning, grammar, morphology, rhetorical features and language benefits.')],
-    ['workbook','✓','02','التدريبات التفاعلية','Workbook',say('تدريبات كتابية وأسئلة اختيار من متعدد مع التصحيح الفوري ومراجعة السورة.','Written exercises and multiple-choice quizzes with instant checks and a surah review.')],
-    ['irab','۞','03','الإعراب التفصيلي','Iʿrāb Book',say('تحليل نحوي كلمةً كلمة، وترابط التراكيب، وفهرس للصيغ الصرفية.','Detailed grammatical analysis, connected syntax, and a morphology index.')]
-  ];
-  return `<section class="hero"><div class="hero-copy"><div class="hero-tag">ARABIC LIGHT ACADEMY / LESSON 01</div><h1>عَرَبِيَّةُ الْقُرْآنِ</h1><div class="english">QUR'ANIC ARABIC</div><p>${say('ابدأ رحلتك في تعلّم العربية من القرآن الكريم، من خلال سورة الناس. دراسة منظّمة، وتطبيق عملي، وإعراب تفصيلي في مكان واحد.','Begin learning Arabic through Sūrat al-Nās, with structured study, interactive practice, and detailed grammar in one place.')}</p><button class="primary-button" data-open="student">${t('open')} <span aria-hidden="true">←</span></button><div class="hero-short">سُورَةُ النَّاسِ <span>·</span> Chapter 114 <span>·</span> Juzʾ 30</div></div><div class="hero-art" aria-hidden="true"><div class="hero-flower">✤</div><div class="hero-arch">۞</div></div></section>
-  <div class="section-header"><div><div class="overline">YOUR LEARNING PATH</div><h2>${say('رحلتك التعليمية','Your learning path')}</h2><p>${say('ثلاثة كتب متكاملة في درس واحد','Three companion books in one lesson')}</p></div><span class="pill">${t('review')}</span></div>
-  <section class="module-grid">${modules.map(([key,symbol,num,ar,en,description])=>`<article class="module-card"><div class="module-index"><span class="module-symbol" aria-hidden="true">${symbol}</span><span class="module-num">${num} / 03</span></div><h3>${say(ar,en)}</h3><div class="module-en">${en}</div><p>${description}</p><button class="card-link" data-open="${key}">${say('افتح الكتاب','Open book')} <span aria-hidden="true">←</span></button></article>`).join('')}</section>
-  <div class="section-header"><div><div class="overline">AT A GLANCE</div><h2>${say('لمحة عن تقدّمك','Your progress')}</h2></div><button class="card-link" data-open="progress">${say('عرض التفاصيل','See details')} ←</button></div>
-  <section class="metrics">${metric('6',say('آيات السورة','Verses'),'Verses')}${metric(q.total,say('سؤالًا تفاعليًا','Quiz questions'),'Multiple-choice')}${metric(p.percent+'%',say('إنجاز المحتوى','Completed'),'Completed')}</section>
-  <div class="note-banner"><p><strong>${say('ملاحظة للدارس:','Study note:')}</strong> ${say('المحتوى العلمي مستمد من الكتب الثلاثة المعتمدة. يُحفظ تقدّمك وإجاباتك على الجهاز الذي تستخدمه، دون الحاجة إلى إنشاء حساب.','The academic content comes from the three approved books. Your progress and answers are saved on this device; no account is needed.')}</p><button class="secondary-button" data-open="student">${say('ابدأ الآن','Get started')}</button></div>`;
+  return `<header class="library-heading"><div class="eyebrow">ARABIC LIGHT ACADEMY · QUR'ANIC ARABIC</div><h1>${say('اختر كتابك','Choose your book')}</h1><p>${say('اختر أحد الكتب الثلاثة، ثم اختر السورة التي تريد دراستها.','Select one of the three books, then choose the Qur’anic surah you want to study.')}</p></header>
+  <section class="book-catalog" aria-label="${say('الكتب المتاحة','Available books')}">${bookOptions.map(b=>`<article class="catalog-book"><button class="catalog-cover-link" data-choose-book="${b.key}" aria-label="${say('اختر','Choose')} ${esc(b.label)}"><img src="./covers/${b.cover}" alt="${esc(b.label)} cover" loading="lazy"></button><div class="catalog-details"><span class="catalog-kicker">BOOK ${b.num} <span aria-hidden="true">·</span> QUR'ANIC ARABIC</span><h2>${say(b.ar,b.label)}</h2><p>${say(b.descAr,b.desc)}</p><div class="catalog-meta"><span>${say('سورة متاحة الآن','1 surah available')}</span><span>${say('الدرس الأول','Lesson 01')}</span></div><button class="primary-button catalog-action" data-choose-book="${b.key}">${say('اختر الكتاب','Choose this book')} <span aria-hidden="true">${say('←','→')}</span></button></div></article>`).join('')}</section>
+  <section class="library-summary"><div><strong>${say('تقدّمك الدراسي','Your learning progress')}</strong><p>${say('تُحفظ إجاباتك وإنجازاتك على هذا الجهاز.','Your answers and progress are saved on this device.')}</p></div><div class="library-mini-stats"><span>${p.percent}% ${say('مكتمل','complete')}</span><span>${q.attempted}/${q.total} ${say('أسئلة','questions')}</span></div><button class="secondary-button" data-open="progress">${say('عرض التقدّم','View progress')} ${say('←','→')}</button></section>`;
+}
+
+function surahsPage(){
+  const b=bookOptions.find(x=>x.key===ui.selectedBook)||bookOptions[0];
+  return `<nav class="journey-breadcrumb" aria-label="Breadcrumb"><button data-open="home">${say('الكتب','All books')}</button><span aria-hidden="true">/</span><strong>${say(b.ar,b.label)}</strong></nav>
+  <header class="library-heading surah-heading"><div class="eyebrow">${say('الخطوة الثانية · اختر السورة','STEP 02 · SELECT A SURAH')}</div><h1>${say('اختر السورة القرآنية','Choose a Surah')}</h1><p>${say('أنت الآن في','You selected the')} <strong>${say(b.ar,b.label)}</strong>. ${say('اختر السورة للانتقال إلى محتوى هذا الكتاب.','Choose a surah to open its lessons in this book.')}</p></header>
+  <div class="selected-book-strip"><img src="./covers/${b.cover}" alt="" loading="lazy"><div><small>${say('الكتاب المحدد','SELECTED BOOK')}</small><strong>${say(b.ar,b.label)}</strong></div><button data-open="home">${say('تغيير الكتاب','Change book')}</button></div>
+  <section class="surah-choices" aria-label="${say('السور المتاحة','Available surahs')}"><h2>${say('السور المتاحة','Available now')}</h2><button class="surah-choice" data-open-surah="${b.key}"><span class="surah-number">114</span><span class="surah-choice-title"><strong>Surah An-Nās</strong><span lang="ar" dir="rtl">سُورَةُ النَّاسِ</span><small>${say('٦ آيات · الجزء الثلاثون · الدرس الأول','6 verses · Juzʾ 30 · Lesson 01')}</small></span><span class="surah-ready">${say('متاحة','Available')}</span><span class="surah-arrow" aria-hidden="true">${say('←','→')}</span></button></section>
+  <p class="surah-future">${say('ستظهر السور التالية هنا عند إضافة دروسها المعتمدة.','Additional surahs will appear here as their approved lessons are added.')}</p>`;
 }
 
 function blockHTML(block,book){
@@ -142,33 +160,40 @@ function book(){
     if(blocks[0]?.type==='paragraph')introduction+=`<p class="translation">${esc(blocks.shift().text)}</p>`;
   }
   const key=sectionKey(ui.book,ui.index);const isDone=!!progress.done[key];
-  return `<header class="book-heading"><div><div class="eyebrow">LESSON 01 / SURAH AN-NĀS</div><h1>${bookName(ui.book)}</h1><p>${ui.book==='student'?'STUDENT BOOK':ui.book==='workbook'?'WORKBOOK':'DETAILED IʿRĀB BOOK'} · Arabic Light Academy</p></div><span class="pill">${sections.length} ${say('أقسام','sections')}</span></header>
+  return `<nav class="journey-breadcrumb" aria-label="Breadcrumb"><button data-open="home">${say('الكتب','All books')}</button><span aria-hidden="true">/</span><button data-choose-book="${ui.book}">${bookName(ui.book)}</button><span aria-hidden="true">/</span><strong>${say('سورة الناس','Surah An-Nās')}</strong></nav><header class="book-heading"><div><div class="eyebrow">LESSON 01 / SURAH AN-NĀS</div><h1>${bookName(ui.book)}</h1><p>${ui.book==='student'?'STUDENT BOOK':ui.book==='workbook'?'WORKBOOK':'DETAILED IʿRĀB BOOK'} · Arabic Light Academy</p></div><span class="pill">${sections.length} ${say('أقسام','sections')}</span></header>
     <div class="book-layout"><aside class="chapter-panel" aria-label="${t('units')}"><h3>${t('units')}</h3>${sections.map((s,i)=>`<button class="chapter-button ${ui.index===i?'selected':''}" data-section="${i}" aria-current="${ui.index===i?'true':'false'}"><span class="chapter-no">${String(i+1).padStart(2,'0')}</span><span>${esc((ui.lang==='en'?s.title.en:s.title.ar)||s.title.en)}</span>${progress.done[sectionKey(ui.book,i)]?'<span class="chapter-done">✓</span>':''}</button>`).join('')}</aside>
-    <article class="lesson-paper"><div class="lesson-header"><div class="lesson-pretitle"><span>عَرَبِيَّةُ الْقُرْآنِ · سُورَةُ النَّاسِ</span><span>0${ui.index+1} / ${sections.length}</span></div><h2>${esc((ui.lang==='en'?section.title.en:section.title.ar)||section.title.en)}</h2><div class="lesson-en">${esc(section.title.en)}</div></div>
+    <article class="lesson-paper"><div class="lesson-header"><div class="lesson-pretitle"><span lang="ar" dir="rtl">عَرَبِيَّةُ الْقُرْآنِ · سُورَةُ النَّاسِ</span><span>${String(ui.index+1).padStart(2,'0')} / ${sections.length}</span></div><h2>${esc((ui.lang==='en'?section.title.en:section.title.ar)||section.title.en)}</h2><div class="lesson-en">${esc(section.title.en)}</div></div>
     ${introduction}${isVerse?verseTools(Number(verseMatch[1]),blocks):blocks.map(b=>blockHTML(b,ui.book)).join('')}
-    <div class="complete-row"><button class="mark-done ${isDone?'is-done':''}" data-done="${ui.index}">${isDone?'✓ '+t('completed'):'○ '+t('complete')}</button><div class="lesson-controls"><button class="step-button" data-step="-1" ${ui.index===0?'disabled':''}>→ ${t('previous')}</button><button class="step-button" data-step="1" ${ui.index===sections.length-1?'disabled':''}>${t('next')} ←</button></div></div></article></div>`;
+    <div class="complete-row"><button class="mark-done ${isDone?'is-done':''}" data-done="${ui.index}">${isDone?'✓ '+t('completed'):'○ '+t('complete')}</button><div class="lesson-controls"><button class="step-button" data-step="-1" ${ui.index===0?'disabled':''}>${say('→','←')} ${t('previous')}</button><button class="step-button" data-step="1" ${ui.index===sections.length-1?'disabled':''}>${t('next')} ${say('←','→')}</button></div></div></article></div>`;
 }
 
 function progressPage(){
   const p=completion();const q=quizStats();
   const names=[['student','كتاب الطالب','Student Book'],['workbook','كتاب التدريبات','Workbook'],['irab','كتاب الإعراب','Iʿrāb Book']];
-  return `<div class="eyebrow">YOUR LEARNING JOURNEY</div><h1 class="section-title">تقدّمك في سورة الناس</h1><p class="lead">تابع الأقسام التي درستها والأسئلة التي أجبت عنها. ويمكنك العودة إلى أي قسم في أي وقت.</p>
-    <section class="summary-grid" style="margin-top:28px">${metric(p.percent+'%','إنجاز الأقسام','Completion')}${metric(q.attempted+'/'+q.total,'الأسئلة المُجابة','Attempted')}${metric(q.correct,'الإجابات الصحيحة المُتحقَّق منها','Correct answers')}</section>
-    <div class="progress-card"><div class="progress-top"><strong>التقدّم الإجمالي</strong><span>${p.percent}%</span></div><div class="progress-track"><div class="progress-fill" style="width:${p.percent}%"></div></div><p class="progress-caption">${p.done} من أصل ${p.total} قسمًا من الكتب الثلاثة تم تحديدها مكتملة.</p></div>
-    <div class="section-header"><div><h2>تفاصيل الكتب</h2><p>يمكنك متابعة كل كتاب على حدة</p></div></div>
-    <div class="progress-list">${names.map(([key,ar,en])=>{const total=data.books[key].length;const count=data.books[key].filter((_,i)=>progress.done[sectionKey(key,i)]).length;return `<button class="progress-line" data-open="${key}" style="width:100%;text-align:right"><span>${ar} <small style="color:#999;direction:ltr;display:inline-block">${en}</small></span><strong>${count} / ${total} ←</strong></button>`}).join('')}</div>
-    <div class="note-banner"><p><strong>الخصوصية:</strong> ${t('local')}؛ لا تُرسَل إجاباتك إلى خادم، ولا تُزامَن بين الأجهزة.</p></div>`;
+  return `<div class="eyebrow">YOUR LEARNING JOURNEY</div><h1 class="section-title">${say('تقدّمك في سورة الناس','Your progress in Surah An-Nās')}</h1><p class="lead">${say('تابع الأقسام التي درستها والأسئلة التي أجبت عنها. يمكنك العودة إلى أي قسم في أي وقت.','Track the sections you have completed and the questions you have answered. Return to any section at any time.')}</p>
+    <section class="summary-grid" style="margin-top:28px">${metric(p.percent+'%',say('إنجاز الأقسام','Sections completed'),'Completion')}${metric(q.attempted+'/'+q.total,say('الأسئلة المُجابة','Questions answered'),'Attempted')}${metric(q.correct,say('الإجابات الصحيحة','Correct answers'),'Correct answers')}</section>
+    <div class="progress-card"><div class="progress-top"><strong>${say('التقدّم الإجمالي','Overall progress')}</strong><span>${p.percent}%</span></div><div class="progress-track"><div class="progress-fill" style="width:${p.percent}%"></div></div><p class="progress-caption">${say(`${p.done} من أصل ${p.total} قسمًا تم تحديدها مكتملة.`,`${p.done} of ${p.total} sections across the three books marked complete.`)}</p></div>
+    <div class="section-header"><div><h2>${say('تفاصيل الكتب','Progress by book')}</h2><p>${say('يمكنك متابعة كل كتاب على حدة','Choose a book to view its available surahs')}</p></div></div>
+    <div class="progress-list">${names.map(([key,ar,en])=>{const total=data.books[key].length;const count=data.books[key].filter((_,i)=>progress.done[sectionKey(key,i)]).length;return `<button class="progress-line" data-choose-book="${key}" style="width:100%"><span>${say(ar,en)}</span><strong>${count} / ${total} ${say('←','→')}</strong></button>`}).join('')}</div>
+    <div class="note-banner"><p><strong>${say('الخصوصية:','Privacy:')}</strong> ${t('local')}. ${say('لا تُرسَل إجاباتك إلى خادم ولا تُزامَن بين الأجهزة.','Answers are not sent to a server or synced between devices.')}</p></div>`;
 }
 
 function render(){
-  const titles={home:t('home'),student:t('student'),workbook:t('workbook'),irab:t('irab'),progress:t('progress')};
+  document.documentElement.lang=ui.lang;
+  document.documentElement.dir=ui.lang==='ar'?'rtl':'ltr';
+  const titles={home:t('home'),surahs:t('surahs'),student:t('student'),workbook:t('workbook'),irab:t('irab'),progress:t('progress')};
   pageLabel.textContent=titles[ui.book];
   nav.querySelectorAll('[data-book]').forEach(btn=>{
-    const active=btn.dataset.book===ui.book;btn.classList.toggle('active',active);btn.setAttribute('aria-current',active?'page':'false');
+    const active=btn.dataset.book===ui.book||(ui.book==='surahs'&&btn.dataset.book===ui.selectedBook);btn.classList.toggle('active',active);btn.setAttribute('aria-current',active?'page':'false');
     btn.querySelector('span:nth-child(2)').textContent=t(btn.dataset.book);
   });
+  document.querySelector('.crumb>span:first-child').textContent=say('عَرَبِيَّةُ الْقُرْآنِ',"Qur'anic Arabic");
+  document.querySelectorAll('.nav-link small').forEach(label=>{
+    if(label.parentElement.dataset.book==='home')label.textContent=say('جميع الكتب','All books');
+  });
   document.getElementById('lang-toggle').textContent=ui.lang==='ar'?'EN':'ع';
-  contentEl.innerHTML=ui.book==='home'?home():ui.book==='progress'?progressPage():book();
+  installButton.lastChild.textContent=say(' تثبيت التطبيق',' Install app');
+  contentEl.innerHTML=ui.book==='home'?home():ui.book==='surahs'?surahsPage():ui.book==='progress'?progressPage():book();
   const verseAudio=document.getElementById('verse-audio');
   if(verseAudio){
     verseAudio.addEventListener('ended',()=>setAudioButton(false));
@@ -199,8 +224,10 @@ async function toggleAudio(){
   catch{setAudioButton(false);if(status)status.textContent=say('لم يبدأ الصوت. تحقق من الإنترنت ثم حاول مجددًا.','Playback could not start. Check your connection and try again.')}
 }
 
-nav.addEventListener('click',e=>{const btn=e.target.closest('[data-book]');if(btn)jump(btn.dataset.book)});
+nav.addEventListener('click',e=>{const btn=e.target.closest('[data-book]');if(btn){if(data.books[btn.dataset.book])chooseBook(btn.dataset.book);else jump(btn.dataset.book)}});
 contentEl.addEventListener('click',e=>{
+  const chosen=e.target.closest('[data-choose-book]');if(chosen){chooseBook(chosen.dataset.chooseBook);return}
+  const surah=e.target.closest('[data-open-surah]');if(surah){jump(surah.dataset.openSurah,0);return}
   const open=e.target.closest('[data-open]');if(open){jump(open.dataset.open);return}
   const section=e.target.closest('[data-section]');if(section){jump(ui.book,Number(section.dataset.section));return}
   const step=e.target.closest('[data-step]');if(step){jump(ui.book,ui.index+Number(step.dataset.step));return}
