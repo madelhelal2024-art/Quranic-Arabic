@@ -20,7 +20,7 @@ const labels = {
 function loadStore(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch{return{}}}
 const saved = loadStore();
 const progress = {done:saved.done||{},chosen:saved.chosen||{},checked:saved.checked||{},written:saved.written||{}};
-const ui = {book:'home',index:0,lang:saved.lang==='en'?'en':'ar'};
+const ui = {book:'home',index:0,versePart:null,lang:saved.lang==='en'?'en':'ar'};
 const t = key => labels[ui.lang][key]||key;
 const say = (ar,en) => ui.lang==='en'?en:ar;
 function store(){try{localStorage.setItem(KEY,JSON.stringify({...progress,lang:ui.lang}))}catch{}}
@@ -31,7 +31,7 @@ function toast(message){clearTimeout(toastTimer);toastEl.textContent=message;toa
 function bookName(book){return t(book)}
 function sectionKey(book,index){return `${book}-${index}`}
 function jump(book,index=0,scroll=true){
-  ui.book=book;ui.index=Math.max(0,Math.min(index,(data?.books[book]?.length||1)-1));
+  ui.book=book;ui.index=Math.max(0,Math.min(index,(data?.books[book]?.length||1)-1));ui.versePart=null;
   const next=book==='home'?'#home':book==='progress'?'#progress':`#${book}/${ui.index+1}`;
   if(location.hash!==next)history.replaceState(null,'',next);
   render();if(scroll)window.scrollTo({top:0,behavior:'smooth'});
@@ -40,7 +40,7 @@ function jump(book,index=0,scroll=true){
 function parseLocation(){
   const match=location.hash.match(/^#(home|progress|student|workbook|irab)(?:\/(\d+))?$/);
   if(!match)return;
-  ui.book=match[1];ui.index=Math.max(0,(Number(match[2])||1)-1);
+  ui.book=match[1];ui.index=Math.max(0,(Number(match[2])||1)-1);ui.versePart=null;
 }
 
 function metric(value,title,en){return `<div class="metric"><div class="metric-value">${esc(value)}</div><div>${esc(title)}<small>${esc(en)}</small></div></div>`}
@@ -94,11 +94,37 @@ function blockHTML(block,book){
   return '';
 }
 
+function verseGroups(blocks){
+  const groups=[];
+  for(const block of blocks){
+    if(block.type==='subheading')groups.push({title:block.title,blocks:[]});
+    else if(groups.length)groups[groups.length-1].blocks.push(block);
+  }
+  return groups;
+}
+
+function versePanel(groups){
+  if(ui.versePart===null)return `<div class="verse-prompt"><span aria-hidden="true">✧</span><p>${say('اختر أحد الأزرار بالأعلى لعرض هذا الجزء من الدرس وحده.','Choose a button above to study one part of the lesson at a time.')}</p></div>`;
+  const selected=groups[ui.versePart];
+  if(!selected)return '';
+  return `<div class="verse-detail-heading"><span>${esc(selected.title.ar||selected.title.en)}</span><small>${esc(selected.title.en)}</small></div>${selected.blocks.map(block=>blockHTML(block,'student')).join('')}`;
+}
+
+function verseTools(verseNumber,blocks){
+  const groups=verseGroups(blocks);
+  const audioNumber=6230+verseNumber;
+  const audioUrl=`https://cdn.islamic.network/quran/audio/128/ar.minshawi/${audioNumber}.mp3`;
+  const tabs=groups.map((group,i)=>`<button class="verse-tab ${ui.versePart===i?'selected':''}" id="verse-tab-${i}" data-verse-part="${i}" role="tab" aria-selected="${ui.versePart===i?'true':'false'}" aria-controls="verse-content-panel"><span class="tab-number">${String(i+1).padStart(2,'0')}</span><span class="tab-ar">${esc(group.title.ar||group.title.en)}</span><small>${esc(group.title.en)}</small></button>`).join('');
+  return `<div class="recitation-box"><div class="recitation-identity"><span class="sound-mark" aria-hidden="true">♫</span><div><strong>${say('استمع إلى الآية','Listen to this verse')}</strong><small>${say('محمد صديق المنشاوي · تلاوة مرتّلة','Mohamed Siddiq al-Minshawi · Murattal')}</small></div></div><button class="audio-button" data-audio-play aria-label="${say('تشغيل تلاوة الآية','Play verse recitation')}" aria-pressed="false"><span class="audio-symbol" aria-hidden="true">▶</span><span class="audio-caption">${say('استمع للآية','Play verse')}</span></button><audio id="verse-audio" src="${audioUrl}" preload="none"></audio></div><div class="audio-attribution"><span id="audio-status" role="status" aria-live="polite">${say('يحتاج الصوت إلى اتصال بالإنترنت','Audio needs an internet connection')}</span><a href="https://alquran.cloud/cdn" target="_blank" rel="noopener noreferrer">Al Quran Cloud / Islamic Network</a></div>
+  <section class="verse-study"><div class="verse-study-heading"><div><strong>${say('استكشف الآية خطوة بخطوة','Explore the verse step by step')}</strong><p>${say('كل زر يعرض قسمًا واحدًا فقط من شرح الآية.','Each button opens just one part of the verse study.')}</p></div><span class="study-decoration" aria-hidden="true">۞</span></div><div class="verse-tabs" role="tablist" aria-label="${say('أقسام شرح الآية','Verse study sections')}">${tabs}</div><div class="verse-content-panel" id="verse-content-panel" role="tabpanel" aria-live="polite">${versePanel(groups)}</div></section>`;
+}
+
 function book(){
   const sections=data.books[ui.book]||[];
   ui.index=Math.min(ui.index,sections.length-1);
   const section=sections[ui.index];if(!section)return `<p class="empty">لا يوجد محتوى.</p>`;
-  const isVerse=/^Verse \d/.test(section.title.en);
+  const verseMatch=ui.book==='student'?section.title.en.match(/^Verse (\d+)$/):null;
+  const isVerse=!!verseMatch;
   const blocks=section.blocks.slice();let introduction='';
   if(isVerse&&blocks[0]?.type==='paragraph'){
     const original=blocks.shift().text;
@@ -109,7 +135,7 @@ function book(){
   return `<header class="book-heading"><div><div class="eyebrow">LESSON 01 / SURAH AN-NĀS</div><h1>${bookName(ui.book)}</h1><p>${ui.book==='student'?'STUDENT BOOK':ui.book==='workbook'?'WORKBOOK':'DETAILED IʿRĀB BOOK'} · Arabic Light Academy</p></div><span class="pill">${sections.length} ${say('أقسام','sections')}</span></header>
     <div class="book-layout"><aside class="chapter-panel" aria-label="${t('units')}"><h3>${t('units')}</h3>${sections.map((s,i)=>`<button class="chapter-button ${ui.index===i?'selected':''}" data-section="${i}" aria-current="${ui.index===i?'true':'false'}"><span class="chapter-no">${String(i+1).padStart(2,'0')}</span><span>${esc((ui.lang==='en'?s.title.en:s.title.ar)||s.title.en)}</span>${progress.done[sectionKey(ui.book,i)]?'<span class="chapter-done">✓</span>':''}</button>`).join('')}</aside>
     <article class="lesson-paper"><div class="lesson-header"><div class="lesson-pretitle"><span>عَرَبِيَّةُ الْقُرْآنِ · سُورَةُ النَّاسِ</span><span>0${ui.index+1} / ${sections.length}</span></div><h2>${esc((ui.lang==='en'?section.title.en:section.title.ar)||section.title.en)}</h2><div class="lesson-en">${esc(section.title.en)}</div></div>
-    ${introduction}${blocks.map(b=>blockHTML(b,ui.book)).join('')}
+    ${introduction}${isVerse?verseTools(Number(verseMatch[1]),blocks):blocks.map(b=>blockHTML(b,ui.book)).join('')}
     <div class="complete-row"><button class="mark-done ${isDone?'is-done':''}" data-done="${ui.index}">${isDone?'✓ '+t('completed'):'○ '+t('complete')}</button><div class="lesson-controls"><button class="step-button" data-step="-1" ${ui.index===0?'disabled':''}>→ ${t('previous')}</button><button class="step-button" data-step="1" ${ui.index===sections.length-1?'disabled':''}>${t('next')} ←</button></div></div></article></div>`;
 }
 
@@ -133,6 +159,34 @@ function render(){
   });
   document.getElementById('lang-toggle').textContent=ui.lang==='ar'?'EN':'ع';
   contentEl.innerHTML=ui.book==='home'?home():ui.book==='progress'?progressPage():book();
+  const verseAudio=document.getElementById('verse-audio');
+  if(verseAudio){
+    verseAudio.addEventListener('ended',()=>setAudioButton(false));
+    verseAudio.addEventListener('error',()=>{
+      setAudioButton(false);
+      const status=document.getElementById('audio-status');
+      if(status)status.textContent=say('تعذّر تحميل التلاوة. تحقّق من اتصال الإنترنت.','Could not load the recitation. Check your internet connection.');
+    });
+  }
+}
+
+function setAudioButton(playing){
+  const button=document.querySelector('[data-audio-play]');if(!button)return;
+  button.setAttribute('aria-pressed',playing?'true':'false');
+  button.classList.toggle('playing',playing);
+  button.querySelector('.audio-symbol').textContent=playing?'Ⅱ':'▶';
+  button.querySelector('.audio-caption').textContent=playing?say('إيقاف مؤقت','Pause'):say('استمع للآية','Play verse');
+  const status=document.getElementById('audio-status');
+  if(status)status.textContent=playing?say('جارٍ تشغيل التلاوة','Playing recitation'):say('يمكنك إعادة الاستماع في أي وقت','Replay whenever you like');
+}
+
+async function toggleAudio(){
+  const audio=document.getElementById('verse-audio');if(!audio)return;
+  if(!audio.paused){audio.pause();setAudioButton(false);return}
+  const status=document.getElementById('audio-status');
+  if(status)status.textContent=say('جارٍ تحميل التلاوة…','Loading recitation…');
+  try{await audio.play();setAudioButton(true)}
+  catch{setAudioButton(false);if(status)status.textContent=say('لم يبدأ الصوت. تحقق من الإنترنت ثم حاول مجددًا.','Playback could not start. Check your connection and try again.')}
 }
 
 nav.addEventListener('click',e=>{const btn=e.target.closest('[data-book]');if(btn)jump(btn.dataset.book)});
@@ -140,6 +194,20 @@ contentEl.addEventListener('click',e=>{
   const open=e.target.closest('[data-open]');if(open){jump(open.dataset.open);return}
   const section=e.target.closest('[data-section]');if(section){jump(ui.book,Number(section.dataset.section));return}
   const step=e.target.closest('[data-step]');if(step){jump(ui.book,ui.index+Number(step.dataset.step));return}
+  const part=e.target.closest('[data-verse-part]');if(part){
+    const next=Number(part.dataset.versePart);
+    ui.versePart=ui.versePart===next?null:next;
+    const groups=verseGroups(data.books.student[ui.index].blocks);
+    contentEl.querySelectorAll('[data-verse-part]').forEach(button=>{
+      const selected=Number(button.dataset.versePart)===ui.versePart;
+      button.classList.toggle('selected',selected);
+      button.setAttribute('aria-selected',selected?'true':'false');
+    });
+    const panel=document.getElementById('verse-content-panel');
+    if(panel)panel.innerHTML=versePanel(groups);
+    return;
+  }
+  if(e.target.closest('[data-audio-play]')){toggleAudio();return}
   const done=e.target.closest('[data-done]');if(done){const key=sectionKey(ui.book,ui.index);progress.done[key]=!progress.done[key];store();render();toast(t('done'));return}
   const check=e.target.closest('[data-check]');if(check){const id=check.dataset.check;if(!progress.chosen[id]){toast(t('pick'));return}progress.checked[id]=true;store();const good=progress.chosen[id]===data.answerKey[id];document.getElementById(`feedback-${id}`).innerHTML=`<span class="feedback ${good?'correct':'incorrect'}">${good?'✓ '+t('right'):'↻ '+t('wrong')}</span>`;return}
   const row=e.target.closest('.vocab-row');if(row){row.classList.toggle('revealed');row.setAttribute('aria-pressed',row.classList.contains('revealed')?'true':'false')}

@@ -5,6 +5,8 @@ A bilingual, installable educational web app for **Lesson 01: Sūrat al-Nās**, 
 ## Modules
 
 - **Student Book:** surah introduction, six verse studies, word-by-word glosses, grammar/morphology, rhetoric, final review, and 20 MCQs.
+- **Verse-by-verse listening:** streams Mohamed Siddiq al-Minshawi's Murattal recitation from Al Quran Cloud / Islamic Network, with a separate play/pause button on each verse.
+- **Focused study:** each verse's vocabulary, overall meaning, grammar, conjugation, rhetoric, and language benefit can be opened independently using labelled buttons.
 - **Workbook:** written exercises, 20 MCQs, immediate answer checking, and a final assessment.
 - **Iʿrāb Book:** detailed verse-by-verse grammar, syntax map, and morphology index.
 
@@ -42,4 +44,5 @@ The converter mechanically preserves source paragraph text, section order, and t
 
 ## Privacy and scope
 
-This is a one-lesson app (Surah An-Nās). It does not claim to include the other surahs, cloud accounts, server-side grades, or audio recitation. Data saved in one browser will not automatically sync to another device.
+This is a one-lesson app (Surah An-Nās). It does not claim to include other surahs, cloud accounts, or server-side grades. Data saved in one browser will not automatically sync to another device.
+Audio is streamed from a third-party provider and requires internet access. No audio recordings are bundled or redistributed by this repository. The reciter/rightsholder retains rights to the recordings; see [Al Quran Cloud's terms](https://alquran.cloud/terms-and-conditions).
