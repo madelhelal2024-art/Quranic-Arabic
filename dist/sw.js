@@ -1,4 +1,4 @@
-const CACHE = 'quranic-arabic-lesson01-v5';
+const CACHE = 'quranic-arabic-lesson01-v6';
 const ASSETS = ['./', './index.html', './style.css', './quran.css', './library.css', './app.js', './content.json', './surahs.json', './manifest.webmanifest', './academy-logo.png', './icon-192.png', './icon-512.png', './covers/student.png', './covers/workbook.png', './covers/irab.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
